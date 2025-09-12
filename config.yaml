@@ -1,0 +1,224 @@
+# GenomeAI Configuration File
+# Production-ready bioinformatics pipeline configuration
+
+# General settings
+threads: 8
+temp_dir: "/tmp/genomeai"
+log_level: "INFO"
+
+# Reference genome settings
+reference:
+  genome: "/path/to/GRCh38.fa"  # Update with actual path
+  gtf: "/path/to/gencode.v44.annotation.gtf"  # Update with actual path
+
+# Quality control settings
+qc:
+  min_quality: 20
+  min_length: 50
+  fastp_params:
+    - "--detect_adapter_for_pe"
+    - "--correction"
+    - "--cut_front"
+    - "--cut_tail"
+    - "--cut_window_size=4"
+    - "--cut_mean_quality=20"
+
+# Alignment settings
+alignment:
+  bwa_params:
+    - "-M"  # Mark shorter split hits as secondary
+  minimap2_params:
+    - "--secondary=no"
+    - "-L"  # Use long cigars for better accuracy
+
+# Variant calling settings
+variant_calling:
+  min_base_quality: 20
+  min_mapping_quality: 20
+  min_alt_fraction: 0.2
+  min_coverage: 4
+  additional_params:
+    - "--use-best-n-alleles=4"
+    - "--min-alternate-count=2"
+  
+  # GATK settings (for future use)
+  gatk:
+    stand_call_conf: 30
+    additional_params:
+      - "--dont-use-soft-clipped-bases"
+
+# Variant filtering settings
+variant_filtering:
+  min_depth: 10
+  min_gq: 20
+  min_qual: 30
+  max_missing: 0.1
+  apply_hard_filters: false
+  
+  # Custom filter expressions
+  custom_filters:
+    - "FORMAT/DP >= 10"
+    - "QUAL >= 30"
+  
+  # Hard filters (GATK VariantFiltration)
+  hard_filters:
+    QualByDepth: "QD < 2.0"
+    FisherStrand: "FS > 60.0"
+    RMSMappingQuality: "MQ < 40.0"
+    MappingQualityRankSum: "MQRankSum < -12.5"
+    ReadPosRankSum: "ReadPosRankSum < -8.0"
+
+# Annotation settings
+annotation:
+  vep:
+    cache_dir: "/path/to/vep_cache"  # Update with actual path
+    species: "homo_sapiens"
+    assembly: "GRCh38"
+    
+    # VEP plugins
+    plugins:
+      - "CADD,/path/to/CADD.tsv.gz"
+      - "dbNSFP,/path/to/dbNSFP.txt.gz,ALL"
+    
+    # Custom annotations
+    custom:
+      - "/path/to/clinvar.vcf.gz,ClinVar,vcf,exact,0,CLNSIG,CLNREVSTAT,CLNDN"
+      - "/path/to/gnomad.vcf.gz,gnomAD,vcf,exact,0,AF,AF_popmax"
+    
+    # Output fields
+    fields:
+      - "Uploaded_variation"
+      - "Location"
+      - "Allele"
+      - "Gene"
+      - "Feature"
+      - "Feature_type"
+      - "Consequence"
+      - "cDNA_position"
+      - "CDS_position"
+      - "Protein_position"
+      - "Amino_acids"
+      - "Codons"
+      - "Existing_variation"
+      - "IMPACT"
+      - "DISTANCE"
+      - "STRAND"
+      - "FLAGS"
+      - "SYMBOL"
+      - "BIOTYPE"
+      - "CANONICAL"
+    
+    additional_params:
+      - "--everything"
+      - "--check_existing"
+      - "--pick"  # Pick one consequence per variant
+
+# RNA-seq settings
+rna:
+  salmon:
+    index_path: "/path/to/salmon_index"  # Update with actual path
+    transcriptome_fasta: "/path/to/transcriptome.fa"  # Update with actual path
+    kmer_length: 31
+    bootstrap_samples: 100
+    
+    index_params:
+      - "--type=quasi"
+      - "--keepDuplicates"
+    
+    additional_params:
+      - "--validateMappings"
+      - "--gcBias"
+      - "--seqBias"
+      - "--posBias"
+  
+  # Transcript to gene mapping
+  tx2gene_mapping: "/path/to/tx2gene.tsv"  # Update with actual path
+
+# AI Explanation settings
+explain:
+  # FAISS index settings
+  index_dir: "faiss_index"
+  embedding_model: "all-MiniLM-L6-v2"
+  
+  # ClinVar data
+  clinvar_file: "/path/to/clinvar_summary.txt"  # Update with actual path
+  
+  # Retrieval settings
+  num_similar_variants: 5
+  min_similarity_threshold: 0.5
+  max_variants_to_explain: 100
+  exclude_uncertain: false
+  
+  required_fields:
+    - "gene"
+    - "clinical_significance"
+  
+  # Local LLM settings
+  llm:
+    model_path: "/path/to/llama-model.gguf"  # Update with actual path
+    context_length: 2048
+    max_tokens: 300
+    temperature: 0.7
+    threads: 4
+
+# Output settings
+output:
+  compress_vcf: true
+  create_index: true
+  save_intermediate: false
+  
+  # File formats
+  formats:
+    variants: ["vcf.gz", "parquet", "tsv"]
+    annotations: ["parquet", "tsv", "json"]
+    reports: ["html", "markdown", "json"]
+
+# Resource limits
+resources:
+  max_memory_gb: 32
+  max_disk_gb: 100
+  timeout_hours: 24
+
+# Logging settings
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: "genomeai.log"
+  max_size_mb: 100
+  backup_count: 5
+
+# Database paths (update these with actual paths)
+databases:
+  clinvar: "/path/to/clinvar.vcf.gz"
+  gnomad: "/path/to/gnomad.genomes.vcf.gz"
+  dbsnp: "/path/to/dbsnp.vcf.gz"
+  cadd: "/path/to/CADD_GRCh38.tsv.gz"
+  dbnsfp: "/path/to/dbNSFP4.4a.txt.gz"
+
+# Tool paths (usually auto-detected, specify if needed)
+tools:
+  fastp: "fastp"
+  bwa_mem2: "bwa-mem2"
+  minimap2: "minimap2"
+  samtools: "samtools"
+  bcftools: "bcftools"
+  freebayes: "freebayes"
+  gatk: "gatk"
+  vep: "vep"
+  salmon: "salmon"
+  tabix: "tabix"
+  bgzip: "bgzip"
+
+# Validation settings
+validation:
+  check_tools: true
+  check_references: true
+  check_databases: false  # Set to true in production
+  strict_mode: false
+
+# Performance tuning
+performance:
+  chunk_size: 1000000  # For large file processing
+  parallel_jobs: 4
+  memory_per_job: "8G"
+  use_tmp_disk: true

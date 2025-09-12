@@ -1,0 +1,92 @@
+name: genomeai
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+
+dependencies:
+  # Python
+  - python=3.10
+
+  # Bioinformatics tools
+  - fastp=0.23.4
+  - bwa-mem2=2.2.1
+  - minimap2=2.26
+  - samtools=1.18
+  - bcftools=1.18
+  - freebayes=1.3.6
+  - gatk4=4.4.0.0
+  - ensembl-vep=110.1
+  - salmon=1.10.2
+  - tabix=1.11
+  - htslib=1.18
+
+  # Python packages from conda-forge
+  - pandas=2.0.3
+  - numpy=1.24.3
+  - scipy=1.10.1
+  - matplotlib=3.7.2
+  - seaborn=0.12.2
+  - scikit-learn=1.3.0
+  - biopython=1.81
+  - pysam=0.21.0
+  - pyyaml=6.0.1
+  - jinja2=3.1.2
+  - tqdm=4.65.0
+  - psutil=5.9.5
+  - joblib=1.3.1
+
+  # pip-only packages
+  - pip
+  - pip:
+    - typer>=0.9.0
+    - pydantic>=2.0.0
+    - pyarrow>=12.0.0
+    - sentence-transformers>=2.2.0
+    - faiss-cpu>=1.7.4
+    - transformers>=4.30.0
+    - llama-cpp-python>=0.2.0
+    - cyvcf2>=0.30.0
+    - loguru>=0.7.0
+    - plotly>=5.15.0
+    - python-dotenv>=1.0.0
+    - dask>=2023.7.0
+    - cryptography>=41.0.0
+
+  # Development tools (optional)
+  - pytest=7.4.0
+  - black=23.7.0
+  - flake8=6.0.0
+  - mypy=1.5.1
+
+  # System dependencies
+  - curl
+  - wget
+  - git
+  - make
+  - gcc
+  - g++
+  - cmake
+
+# Post-installation setup
+# Run these commands after environment creation:
+# 1. Download and install VEP cache:
+#    vep_install -a cf -s homo_sapiens -y GRCh38 -c /path/to/vep_cache --CONVERT
+# 
+# 2. Download reference genome:
+#    wget https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_44/GRCh38.primary_assembly.genome.fa.gz
+#    gunzip GRCh38.primary_assembly.genome.fa.gz
+# 
+# 3. Download ClinVar data:
+#    wget https://ftp.ncbi.nlm.nih.gov/pub/clinvar/vcf_GRCh38/clinvar.vcf.gz
+#    wget https://ftp.ncbi.nlm.nih.gov/pub/clinvar/vcf_GRCh38/clinvar.vcf.gz.tbi
+# 
+# 4. Download gnomAD data:
+#    wget https://gnomad-public-us-east-1.s3.amazonaws.com/release/3.1.2/vcf/genomes/gnomad.genomes.v3.1.2.sites.vcf.bgz
+# 
+# 5. Build Salmon index:
+#    wget https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_44/gencode.v44.transcripts.fa.gz
+#    salmon index -t gencode.v44.transcripts.fa.gz -i salmon_index_gencode44
+# 
+# 6. Download LLM model (example):
+#    wget https://huggingface.co/TheBloke/Llama-2-7B-Chat-GGUF/resolve/main/llama-2-7b-chat.q4_0.gguf

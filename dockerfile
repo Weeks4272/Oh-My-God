@@ -1,0 +1,162 @@
+# GenomeAI Production Dockerfile
+# Multi-stage build for optimized container size
+
+FROM mambaorg/micromamba:1.5-jammy as base
+
+# Set working directory
+WORKDIR /app
+
+# Copy environment file
+COPY environment.yml /app/
+
+# Install conda environment
+RUN micromamba install -y -n base -f environment.yml && \
+    micromamba clean --all --yes
+
+# Activate environment
+ARG MAMBA_DOCKERFILE_ACTIVATE=1
+
+# Install additional system dependencies
+USER root
+RUN apt-get update && apt-get install -y \
+    curl \
+    wget \
+    git \
+    build-essential \
+    cmake \
+    libbz2-dev \
+    liblzma-dev \
+    libcurl4-openssl-dev \
+    libssl-dev \
+    zlib1g-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+# Create non-root user
+RUN useradd -m -u 1000 genomeai && \
+    chown -R genomeai:genomeai /app
+
+USER genomeai
+
+# Copy source code
+COPY --chown=genomeai:genomeai src/ /app/src/
+COPY --chown=genomeai:genomeai config.yaml /app/
+COPY --chown=genomeai:genomeai requirements.txt /app/
+
+# Install Python dependencies
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Create necessary directories
+RUN mkdir -p /app/data /app/output /app/logs /app/tmp
+
+# Set environment variables
+ENV PYTHONPATH="/app:${PYTHONPATH}"
+ENV GENOMEAI_CONFIG="/app/config.yaml"
+ENV GENOMEAI_DATA_DIR="/app/data"
+ENV GENOMEAI_OUTPUT_DIR="/app/output"
+ENV GENOMEAI_LOG_DIR="/app/logs"
+ENV GENOMEAI_TMP_DIR="/app/tmp"
+
+# Production stage
+FROM base as production
+
+# Copy application
+COPY --from=base /app /app
+WORKDIR /app
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
+    CMD python -c "import src; print('GenomeAI is healthy')" || exit 1
+
+# Default command
+ENTRYPOINT ["python", "-m", "src.cli"]
+CMD ["--help"]
+
+# Development stage
+FROM base as development
+
+# Install development dependencies
+RUN pip install --no-cache-dir \
+    jupyter \
+    ipython \
+    notebook \
+    jupyterlab
+
+# Expose Jupyter port
+EXPOSE 8888
+
+# Development command
+CMD ["jupyter", "lab", "--ip=0.0.0.0", "--port=8888", "--no-browser", "--allow-root"]
+
+# Data download stage (for reference data)
+FROM base as data-downloader
+
+USER root
+
+# Create data directories
+RUN mkdir -p /data/reference /data/databases /data/indexes
+
+# Download reference genome (GRCh38)
+RUN cd /data/reference && \
+    wget -q https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_44/GRCh38.primary_assembly.genome.fa.gz && \
+    gunzip GRCh38.primary_assembly.genome.fa.gz && \
+    wget -q https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_44/gencode.v44.annotation.gtf.gz && \
+    gunzip gencode.v44.annotation.gtf.gz
+
+# Download transcriptome for Salmon
+RUN cd /data/reference && \
+    wget -q https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_44/gencode.v44.transcripts.fa.gz && \
+    gunzip gencode.v44.transcripts.fa.gz
+
+# Download ClinVar data
+RUN cd /data/databases && \
+    wget -q https://ftp.ncbi.nlm.nih.gov/pub/clinvar/vcf_GRCh38/clinvar.vcf.gz && \
+    wget -q https://ftp.ncbi.nlm.nih.gov/pub/clinvar/vcf_GRCh38/clinvar.vcf.gz.tbi
+
+# Download sample gnomAD data (chromosome 22 only for demo)
+RUN cd /data/databases && \
+    wget -q https://gnomad-public-us-east-1.s3.amazonaws.com/release/3.1.2/vcf/genomes/gnomad.genomes.v3.1.2.sites.chr22.vcf.bgz && \
+    wget -q https://gnomad-public-us-east-1.s3.amazonaws.com/release/3.1.2/vcf/genomes/gnomad.genomes.v3.1.2.sites.chr22.vcf.bgz.tbi
+
+# Build indexes
+USER genomeai
+
+# Build BWA-mem2 index
+RUN cd /data/indexes && \
+    bwa-mem2 index /data/reference/GRCh38.primary_assembly.genome.fa
+
+# Build Salmon index
+RUN cd /data/indexes && \
+    salmon index -t /data/reference/gencode.v44.transcripts.fa -i salmon_gencode44 --type quasi
+
+# Set permissions
+USER root
+RUN chown -R genomeai:genomeai /data
+
+# Final production image with data
+FROM production as production-with-data
+
+# Copy reference data
+COPY --from=data-downloader --chown=genomeai:genomeai /data /app/data
+
+# Update config paths
+RUN sed -i 's|/path/to/GRCh38.fa|/app/data/reference/GRCh38.primary_assembly.genome.fa|g' /app/config.yaml && \
+    sed -i 's|/path/to/gencode.v44.annotation.gtf|/app/data/reference/gencode.v44.annotation.gtf|g' /app/config.yaml && \
+    sed -i 's|/path/to/salmon_index|/app/data/indexes/salmon_gencode44|g' /app/config.yaml && \
+    sed -i 's|/path/to/transcriptome.fa|/app/data/reference/gencode.v44.transcripts.fa|g' /app/config.yaml && \
+    sed -i 's|/path/to/clinvar.vcf.gz|/app/data/databases/clinvar.vcf.gz|g' /app/config.yaml
+
+# Labels
+LABEL maintainer="GenomeAI Team <genomeai@example.com>"
+LABEL version="1.0.0"
+LABEL description="GenomeAI: AI-powered genomics analysis pipeline"
+LABEL org.opencontainers.image.source="https://github.com/genomeai/genomeai"
+LABEL org.opencontainers.image.documentation="https://docs.genomeai.org"
+LABEL org.opencontainers.image.licenses="MIT"
+
+# Volume mounts for data persistence
+VOLUME ["/app/output", "/app/logs", "/app/tmp"]
+
+# Example usage in comments
+# Build: docker build -t genomeai:latest .
+# Run DNA analysis: docker run -v $(pwd)/data:/app/input -v $(pwd)/output:/app/output genomeai:latest dna /app/input/reads_R1.fastq.gz --r2 /app/input/reads_R2.fastq.gz --outdir /app/output
+# Run RNA analysis: docker run -v $(pwd)/data:/app/input -v $(pwd)/output:/app/output genomeai:latest rna-only /app/input/rna_R1.fastq.gz --r2 /app/input/rna_R2.fastq.gz --outdir /app/output
