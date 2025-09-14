@@ -32,9 +32,7 @@ Dependencies
 Bioinformatics tools (fastp, bwa-mem2, samtools, etc.)
 Python packages (pandas, numpy, sentence-transformers, etc.)
 Reference data (GRCh38, ClinVar, gnomAD)
-
 🛠️ Installation
-
 Option 1: Docker (Recommended)
 # Build the container
 docker build -t genomeai:latest .

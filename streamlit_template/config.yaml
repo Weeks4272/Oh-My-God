@@ -1,5 +1,5 @@
-# GenomeAI Configuration File
-# Production-ready bioinformatics pipeline configuration
+# GenomeAI Enhanced Configuration File
+# Production-ready bioinformatics pipeline with pharmacogenomics, MTHFR, disease risk, and traits analysis
 
 # General settings
 threads: 8
@@ -161,6 +161,189 @@ explain:
     temperature: 0.7
     threads: 4
 
+# Enhanced Analysis Modules Configuration
+pharmacogenomics:
+  enabled: true
+  
+  # PharmGKB data settings
+  pharmgkb:
+    data_file: "/path/to/pharmgkb_data.json"  # Update with actual path
+    api_key: ""  # Optional API key for PharmGKB
+  
+  # CPIC guidelines
+  cpic:
+    guidelines_file: "/path/to/cpic_guidelines.json"  # Update with actual path
+  
+  # Genes to analyze
+  target_genes:
+    - "CYP2D6"
+    - "CYP2C19"
+    - "CYP3A4"
+    - "TPMT"
+    - "DPYD"
+    - "SLCO1B1"
+    - "UGT1A1"
+    - "VKORC1"
+  
+  # Drug categories to focus on
+  drug_categories:
+    - "cardiovascular"
+    - "psychiatric"
+    - "oncology"
+    - "immunosuppressants"
+    - "anticoagulants"
+
+mthfr:
+  enabled: true
+  
+  # MTHFR variants to analyze
+  variants:
+    c677t:
+      rsid: "rs1801133"
+      chromosome: "1"
+      position: 11796321  # GRCh38
+    a1298c:
+      rsid: "rs1801131"
+      chromosome: "1"
+      position: 11794419  # GRCh38
+  
+  # Risk assessment thresholds
+  risk_levels:
+    low: "No variants or single heterozygous variant"
+    mild: "Single heterozygous variant with mild effect"
+    moderate: "Compound heterozygous or single homozygous mild variant"
+    high: "Homozygous C677T or compound heterozygous high-risk"
+
+disease_risk:
+  enabled: true
+  
+  # High-priority disease genes
+  cancer_genes:
+    - "BRCA1"
+    - "BRCA2"
+    - "TP53"
+    - "APC"
+    - "MLH1"
+    - "MSH2"
+    - "MSH6"
+    - "PMS2"
+    - "PALB2"
+    - "ATM"
+    - "CHEK2"
+  
+  cardiovascular_genes:
+    - "LDLR"
+    - "PCSK9"
+    - "APOB"
+    - "MYBPC3"
+    - "MYH7"
+    - "TNNT2"
+    - "TNNI3"
+  
+  neurological_genes:
+    - "APOE"
+    - "HTT"
+    - "SNCA"
+    - "LRRK2"
+    - "PARK7"
+    - "PINK1"
+    - "PRKN"
+  
+  metabolic_genes:
+    - "HFE"
+    - "PAH"
+    - "CFTR"
+    - "GBA"
+    - "HEXA"
+    - "SMN1"
+  
+  # Clinical significance thresholds
+  significance_levels:
+    pathogenic: ["Pathogenic", "Likely pathogenic"]
+    uncertain: ["Uncertain significance", "VUS"]
+    benign: ["Benign", "Likely benign"]
+
+traits_ancestry:
+  enabled: true
+  
+  # Physical traits
+  physical_traits:
+    eye_color:
+      - "rs12913832"  # HERC2
+      - "rs1800407"   # OCA2
+    hair_color:
+      - "rs1805007"   # MC1R
+      - "rs1805008"   # MC1R
+      - "rs1110400"   # MC1R
+    skin_pigmentation:
+      - "rs1426654"   # SLC24A5
+      - "rs16891982"  # SLC45A2
+  
+  # Nutritional genomics
+  nutritional_markers:
+    lactose_intolerance:
+      - "rs4988235"   # LCT
+    caffeine_metabolism:
+      - "rs762551"    # CYP1A2
+    alcohol_metabolism:
+      - "rs1229984"   # ADH1B
+      - "rs671"       # ALDH2
+    folate_metabolism:
+      - "rs1801133"   # MTHFR C677T
+      - "rs1801131"   # MTHFR A1298C
+    vitamin_d_metabolism:
+      - "rs2282679"   # GC
+    iron_metabolism:
+      - "rs1799945"   # HFE H63D
+  
+  # Ancestry informative markers
+  ancestry_markers:
+    european:
+      - "rs16891982"  # SLC45A2
+      - "rs1426654"   # SLC24A5
+      - "rs12913832"  # HERC2
+    african:
+      - "rs2814778"   # DARC
+      - "rs334"       # HBB
+      - "rs1800562"   # HFE
+    asian:
+      - "rs671"       # ALDH2
+      - "rs17822931"  # ABCC11
+      - "rs3827760"   # EDAR
+    native_american:
+      - "rs9939609"   # FTO
+      - "rs1815739"   # ACTN3
+
+# Enhanced reporting settings
+enhanced_reporting:
+  enabled: true
+  
+  # Report formats
+  formats:
+    - "markdown"
+    - "html"
+    - "json"
+  
+  # Individual module reports
+  individual_reports:
+    pharmacogenomics: true
+    mthfr: true
+    disease_risk: true
+    traits_ancestry: true
+  
+  # Comprehensive report
+  comprehensive_report:
+    enabled: true
+    include_disclaimers: true
+    include_recommendations: true
+    include_variant_details: true
+  
+  # Report styling
+  styling:
+    theme: "professional"
+    include_charts: false  # Set to true when visualization is implemented
+    include_tables: true
+
 # Output settings
 output:
   compress_vcf: true
@@ -194,6 +377,8 @@ databases:
   dbsnp: "/path/to/dbsnp.vcf.gz"
   cadd: "/path/to/CADD_GRCh38.tsv.gz"
   dbnsfp: "/path/to/dbNSFP4.4a.txt.gz"
+  pharmgkb: "/path/to/pharmgkb_variants.tsv"
+  cpic: "/path/to/cpic_guidelines.tsv"
 
 # Tool paths (usually auto-detected, specify if needed)
 tools:
@@ -222,3 +407,12 @@ performance:
   parallel_jobs: 4
   memory_per_job: "8G"
   use_tmp_disk: true
+
+# Module enablement (allow users to enable/disable specific analyses)
+modules:
+  basic_pipeline: true      # Core DNA/RNA analysis
+  pharmacogenomics: true    # Drug-gene interactions
+  mthfr: true              # MTHFR variant analysis
+  disease_risk: true        # Disease predisposition
+  traits_ancestry: true     # Physical traits and ancestry
+  enhanced_reporting: true  # Comprehensive reports
