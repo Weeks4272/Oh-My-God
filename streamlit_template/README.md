@@ -32,6 +32,7 @@ Dependencies
 Bioinformatics tools (fastp, bwa-mem2, samtools, etc.)
 Python packages (pandas, numpy, sentence-transformers, etc.)
 Reference data (GRCh38, ClinVar, gnomAD)
+The CLI performs a preflight check and will exit with a clear message if any of these tools are missing.
 🛠️ Installation
 Option 1: Docker (Recommended)
 # Build the container

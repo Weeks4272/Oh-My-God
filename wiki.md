@@ -63,10 +63,18 @@ Usage
 To get started with the GenomeAI pipeline:
 
 Install dependencies:
+```bash
 pip install -r requirements.txt
+```
 Build the Docker image (if using Docker):
+```bash
 docker build -t genomeai .
+```
 Run the application:
+```bash
 python app.py
+```
 Execute pipeline commands using the CLI:
+```bash
 python -m src.cli run-all sample.fastq.gz --outdir results
+```

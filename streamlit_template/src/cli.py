@@ -11,6 +11,7 @@ import yaml
 
 import typer
 import pandas as pd
+import shutil
 
 # Import core modules
 from .qc import run_quality_control
@@ -60,6 +61,14 @@ def load_config(config_file: str = "config.yaml") -> Dict[str, Any]:
         sys.exit(1)
 
 
+def verify_tools() -> None:
+    required = ["fastp", "bwa-mem2", "samtools"]
+    missing = [tool for tool in required if shutil.which(tool) is None]
+    if missing:
+        typer.echo(f"Missing required tools: {', '.join(missing)}", err=True)
+        raise typer.Exit(code=1)
+
+
 @app.command()
 def dna(
     reads1: str = typer.Argument(..., help="Path to R1 FASTQ file"),
@@ -79,6 +88,8 @@ def dna(
     and optional enhanced analysis (pharmacogenomics, MTHFR, disease risk, traits).
     """
     logger.info(f"Starting DNA analysis for {sample_name}")
+
+    verify_tools()
     
     # Load configuration
     config = load_config(config_file)
@@ -184,6 +195,8 @@ def drugs(
     to predict drug metabolism and provide dosing recommendations.
     """
     logger.info("Starting pharmacogenomics analysis")
+
+    verify_tools()
     
     # Load configuration
     config = load_config(config_file)
@@ -229,6 +242,8 @@ def mthfr(
     and personalized recommendations for supplementation and lifestyle.
     """
     logger.info("Starting MTHFR analysis")
+
+    verify_tools()
     
     # Load configuration
     config = load_config(config_file)
@@ -274,6 +289,8 @@ def disease_risk(
     Alzheimer's disease, hemochromatosis, and other genetic conditions.
     """
     logger.info("Starting disease risk analysis")
+
+    verify_tools()
     
     # Load configuration
     config = load_config(config_file)
@@ -319,6 +336,8 @@ def traits(
     caffeine metabolism, and ancestry informative markers.
     """
     logger.info("Starting traits and ancestry analysis")
+
+    verify_tools()
     
     # Load configuration
     config = load_config(config_file)
@@ -368,6 +387,8 @@ def run_all(
     MTHFR analysis, disease risk assessment, and traits analysis.
     """
     logger.info(f"Starting complete analysis for {sample_name}")
+
+    verify_tools()
     
     # Parse modules
     if modules == "all":
@@ -486,6 +507,8 @@ def rna_only(
     of gene expression using Salmon.
     """
     logger.info(f"Starting RNA-seq analysis for {sample_name}")
+
+    verify_tools()
     
     # Load configuration
     config = load_config(config_file)
@@ -529,6 +552,8 @@ def explain(
     explanations of genetic variants and their clinical significance.
     """
     logger.info("Starting variant explanation generation")
+
+    verify_tools()
     
     # Load configuration
     config = load_config(config_file)
@@ -566,6 +591,8 @@ def build_index(
     variant explanation and clinical significance lookup.
     """
     logger.info("Building FAISS index from ClinVar data")
+
+    verify_tools()
     
     # Load configuration
     config = load_config(config_file)
