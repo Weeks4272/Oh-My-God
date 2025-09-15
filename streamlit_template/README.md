@@ -48,9 +48,6 @@ conda activate genomeai
 # Install Python dependencies
 pip install -r requirements.txt
 Option 3: Manual Installation
-# Clone repository
-git clone https://github.com/genomeai/genomeai.git
-cd genomeai
 
 # Install bioinformatics tools via conda/mamba
 mamba install -c bioconda fastp bwa-mem2 minimap2 samtools bcftools freebayes gatk4 ensembl-vep salmon
