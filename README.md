@@ -10,12 +10,13 @@ Lightweight C++ tool for fetching nucleotide sequences and computing GC content.
 ## Installation
 1. Install a C++17 compiler, CMake, libcurl, and zlib
 2. Build:
+   
    ```bash
    mkdir build && cd build
    cmake ../dna_ai
    make
    ```
-
+   
 ## Usage
 Fetch an accession:
 ```bash
