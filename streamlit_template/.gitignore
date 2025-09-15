@@ -223,3 +223,7 @@ Thumbs.db
 
 # Conda
 .conda/
+
+
+build/
+summary.gz
