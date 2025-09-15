@@ -4,6 +4,7 @@
 #include <iostream>
 #include <filesystem>
 #include <fstream>
+#include <sstream>
 #include <algorithm>
 #include <thread>
 
@@ -99,6 +100,25 @@ AnalysisResult GenomeAI::analyze_sequence(const std::string& sequence, SequenceT
     return result;
 }
 
+bool GenomeAI::write_result(const AnalysisResult& result, const std::string& id) {
+    namespace fs = std::filesystem;
+    try {
+        fs::path out = fs::path(config_.output_directory) / (id + ".json");
+        std::ofstream ofs(out);
+        if (!ofs.is_open()) {
+            throw std::runtime_error("Cannot open output file");
+        }
+        ofs << "{\n"
+            << "  \"length\": " << result.length << ",\n"
+            << "  \"gc_content\": " << result.gc_content << "\n";
+        ofs << "}";
+        return true;
+    } catch (const std::exception& e) {
+        handle_error("Failed to write result: " + std::string(e.what()));
+        return false;
+    }
+}
+
 std::future<AnalysisResult> GenomeAI::analyze_sequence_async(const std::string& sequence, 
                                                            SequenceType type) {
     if (!initialized_) {
@@ -170,8 +190,7 @@ bool GenomeAI::process_fasta_file(const std::string& filepath) {
                 // Process previous sequence if exists
                 if (!current_sequence.empty()) {
                     auto result = analyze_sequence(current_sequence, SequenceType::DNA);
-                    // Save result to output directory
-                    // Implementation would save results here
+                    write_result(result, current_header);
                 }
                 
                 current_header = line.substr(1);
@@ -184,7 +203,7 @@ bool GenomeAI::process_fasta_file(const std::string& filepath) {
         // Process last sequence
         if (!current_sequence.empty()) {
             auto result = analyze_sequence(current_sequence, SequenceType::DNA);
-            // Save result to output directory
+            write_result(result, current_header);
         }
         
         return true;
@@ -213,11 +232,11 @@ bool GenomeAI::process_fastq_file(const std::string& filepath) {
         
         while (std::getline(file, line)) {
             line_count++;
-            
+
             if (line_count % 4 == 2) { // Sequence line
                 sequence = line;
                 auto result = analyze_sequence(sequence, SequenceType::DNA);
-                // Save result to output directory
+                write_result(result, "read_" + std::to_string(line_count/4));
             }
         }
         
@@ -244,9 +263,15 @@ bool GenomeAI::process_vcf_file(const std::string& filepath) {
         std::string line;
         while (std::getline(file, line)) {
             if (line.empty() || line[0] == '#') continue;
-            
+
             // Parse VCF line and extract variant information
-            // Implementation would process VCF variants here
+            std::istringstream iss(line);
+            std::string chrom, pos, id, ref;
+            if (!(iss >> chrom >> pos >> id >> ref)) {
+                continue;
+            }
+            auto result = analyze_sequence(ref, SequenceType::DNA);
+            write_result(result, id.empty() ? chrom + ":" + pos : id);
         }
         
         return true;
