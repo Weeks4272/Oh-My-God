@@ -1,0 +1,5 @@
+build/
+summary.gz
+kmer_model.txt
+__pycache__/
+.streamlit/
