@@ -1,0 +1,427 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Weeks\\source\\repos\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Weeks\\source\\repos\\streamlit_template\\dockerfile||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:streamlit_template\\dockerfile||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Weeks\\source\\repos\\dna_ai\\CMakeLists.txt||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:dna_ai\\CMakeLists.txt||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Weeks\\source\\repos\\.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Weeks\\source\\repos\\streamlit_template\\.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:streamlit_template\\.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Weeks\\source\\repos\\streamlit_template\\oryx-build-commands.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:streamlit_template\\oryx-build-commands.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Weeks\\source\\repos\\.git\\config||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:.git\\config||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Weeks\\source\\repos\\.git\\description||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:.git\\description||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Weeks\\source\\repos\\.git\\FETCH_HEAD||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:.git\\FETCH_HEAD||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Weeks\\source\\repos\\.git\\HEAD||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:.git\\HEAD||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Weeks\\source\\repos\\.git\\ms-persist.xml||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:.git\\ms-persist.xml||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Weeks\\source\\repos\\.git\\ORIG_HEAD||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:.git\\ORIG_HEAD||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Weeks\\source\\repos\\.git\\packed-refs||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:.git\\packed-refs||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Weeks\\source\\repos\\.git\\refs\\heads\\main||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:.git\\refs\\heads\\main||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Weeks\\source\\repos\\.git\\refs\\remotes\\origin\\HEAD||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:.git\\refs\\remotes\\origin\\HEAD||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Weeks\\source\\repos\\.git\\logs\\refs\\remotes\\origin\\HEAD||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:.git\\logs\\refs\\remotes\\origin\\HEAD||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Weeks\\source\\repos\\.git\\logs\\refs\\heads\\main||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:.git\\logs\\refs\\heads\\main||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Weeks\\source\\repos\\.git\\logs\\HEAD||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:.git\\logs\\HEAD||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Weeks\\source\\repos\\.git\\info\\exclude||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:.git\\info\\exclude||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Weeks\\source\\repos\\.git\\hooks\\post-update.sample||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:.git\\hooks\\post-update.sample||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Weeks\\source\\repos\\.git\\hooks\\pre-push.sample||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:.git\\hooks\\pre-push.sample||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Weeks\\source\\repos\\.git\\hooks\\pre-rebase.sample||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:.git\\hooks\\pre-rebase.sample||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Weeks\\source\\repos\\.vs\\repos\\v17\\DocumentLayout.json||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:.vs\\repos\\v17\\DocumentLayout.json||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Weeks\\source\\repos\\.vs\\repos\\v17\\DocumentLayout.backup.json||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:.vs\\repos\\v17\\DocumentLayout.backup.json||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Weeks\\source\\repos\\.vs\\VSWorkspaceState.json||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:.vs\\VSWorkspaceState.json||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Weeks\\AppData\\Local\\Microsoft\\VisualStudio\\17.0_448f582d\\OpenFolder\\VSWorkspaceSettings.json||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "dockerfile",
+              "DocumentMoniker": "C:\\Users\\Weeks\\source\\repos\\streamlit_template\\dockerfile",
+              "RelativeDocumentMoniker": "streamlit_template\\dockerfile",
+              "ToolTip": "C:\\Users\\Weeks\\source\\repos\\streamlit_template\\dockerfile",
+              "RelativeToolTip": "streamlit_template\\dockerfile",
+              "ViewState": "AgIAAIEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-09-15T04:53:17.607Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": ".gitignore",
+              "DocumentMoniker": "C:\\Users\\Weeks\\source\\repos\\.gitignore",
+              "RelativeDocumentMoniker": ".gitignore",
+              "ToolTip": "C:\\Users\\Weeks\\source\\repos\\.gitignore",
+              "RelativeToolTip": ".gitignore",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAF8SURBVDhPjVNLTgJBEG1lwpoFB3GNK9fieA48hD8iwT/ihwgSDAIHgAGXXsEV18CNzL/LquqZdsYM6kteXqcy3fWqpmpNRBgOhyABBEgpAFVKPIMUcYzUyOU\u002BXM/b2qtU3vkSfRjjZTCAMAw1A2LwzdFoBPP5HNqdzuL27n4juibWI\u002BUshBA1DIkhEx9iEorFotgslQqGYbxxAGFEqt1MxmPWJLbLZdZ\u002Bv89q5PMFPiTR6z2zdaxR0fXA0XTBcVywkb4fwHXjRteecIDNQ7UmExVYAdPcxYaqclN46na5WenMKjtlVnTYwcXlVYaDqImW9beD5N/TeGy32QHXm6hZ03ZgiSQHp2fnWQ4oBmJqWSqwAqZpZjt4aLXAD4J0VqyZsmoubfB8H2r1eoaD6NXZ9HcHO\u002BSA3f4AjifXl8rItOETM8ckB9WTWpYD9RdeZ1PWVWAHWXPQaDb59f/w8LiqHeh1pvGkCaP6qB8yXusoxmuNZ7XmII4O9vGuEF86osuDYRkpYQAAAABJRU5ErkJggg==",
+              "WhenOpened": "2025-09-15T04:51:41.854Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": ".gitignore",
+              "DocumentMoniker": "C:\\Users\\Weeks\\source\\repos\\streamlit_template\\.gitignore",
+              "RelativeDocumentMoniker": "streamlit_template\\.gitignore",
+              "ToolTip": "C:\\Users\\Weeks\\source\\repos\\streamlit_template\\.gitignore",
+              "RelativeToolTip": "streamlit_template\\.gitignore",
+              "ViewState": "AgIAADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAF8SURBVDhPjVNLTgJBEG1lwpoFB3GNK9fieA48hD8iwT/ihwgSDAIHgAGXXsEV18CNzL/LquqZdsYM6kteXqcy3fWqpmpNRBgOhyABBEgpAFVKPIMUcYzUyOU\u002BXM/b2qtU3vkSfRjjZTCAMAw1A2LwzdFoBPP5HNqdzuL27n4juibWI\u002BUshBA1DIkhEx9iEorFotgslQqGYbxxAGFEqt1MxmPWJLbLZdZ\u002Bv89q5PMFPiTR6z2zdaxR0fXA0XTBcVywkb4fwHXjRteecIDNQ7UmExVYAdPcxYaqclN46na5WenMKjtlVnTYwcXlVYaDqImW9beD5N/TeGy32QHXm6hZ03ZgiSQHp2fnWQ4oBmJqWSqwAqZpZjt4aLXAD4J0VqyZsmoubfB8H2r1eoaD6NXZ9HcHO\u002BSA3f4AjifXl8rItOETM8ckB9WTWpYD9RdeZ1PWVWAHWXPQaDb59f/w8LiqHeh1pvGkCaP6qB8yXusoxmuNZ7XmII4O9vGuEF86osuDYRkpYQAAAABJRU5ErkJggg==",
+              "WhenOpened": "2025-09-15T04:51:22.015Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "oryx-build-commands.txt",
+              "DocumentMoniker": "C:\\Users\\Weeks\\source\\repos\\streamlit_template\\oryx-build-commands.txt",
+              "RelativeDocumentMoniker": "streamlit_template\\oryx-build-commands.txt",
+              "ToolTip": "C:\\Users\\Weeks\\source\\repos\\streamlit_template\\oryx-build-commands.txt",
+              "RelativeToolTip": "streamlit_template\\oryx-build-commands.txt",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2025-09-15T04:47:03.247Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CMakeLists.txt",
+              "DocumentMoniker": "C:\\Users\\Weeks\\source\\repos\\dna_ai\\CMakeLists.txt",
+              "RelativeDocumentMoniker": "dna_ai\\CMakeLists.txt",
+              "ToolTip": "C:\\Users\\Weeks\\source\\repos\\dna_ai\\CMakeLists.txt",
+              "RelativeToolTip": "dna_ai\\CMakeLists.txt",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2025-09-15T04:46:36.691Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "config",
+              "DocumentMoniker": "C:\\Users\\Weeks\\source\\repos\\.git\\config",
+              "RelativeDocumentMoniker": ".git\\config",
+              "ToolTip": "C:\\Users\\Weeks\\source\\repos\\.git\\config",
+              "RelativeToolTip": ".git\\config",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-09-15T04:46:16.083Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "description",
+              "DocumentMoniker": "C:\\Users\\Weeks\\source\\repos\\.git\\description",
+              "RelativeDocumentMoniker": ".git\\description",
+              "ToolTip": "C:\\Users\\Weeks\\source\\repos\\.git\\description",
+              "RelativeToolTip": ".git\\description",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-09-15T04:46:12.981Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "FETCH_HEAD",
+              "DocumentMoniker": "C:\\Users\\Weeks\\source\\repos\\.git\\FETCH_HEAD",
+              "RelativeDocumentMoniker": ".git\\FETCH_HEAD",
+              "ToolTip": "C:\\Users\\Weeks\\source\\repos\\.git\\FETCH_HEAD",
+              "RelativeToolTip": ".git\\FETCH_HEAD",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-09-15T04:46:11.282Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "HEAD",
+              "DocumentMoniker": "C:\\Users\\Weeks\\source\\repos\\.git\\HEAD",
+              "RelativeDocumentMoniker": ".git\\HEAD",
+              "ToolTip": "C:\\Users\\Weeks\\source\\repos\\.git\\HEAD",
+              "RelativeToolTip": ".git\\HEAD",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-09-15T04:46:09.626Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "ms-persist.xml",
+              "DocumentMoniker": "C:\\Users\\Weeks\\source\\repos\\.git\\ms-persist.xml",
+              "RelativeDocumentMoniker": ".git\\ms-persist.xml",
+              "ToolTip": "C:\\Users\\Weeks\\source\\repos\\.git\\ms-persist.xml",
+              "RelativeToolTip": ".git\\ms-persist.xml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003576|",
+              "WhenOpened": "2025-09-15T04:45:56.648Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "ORIG_HEAD",
+              "DocumentMoniker": "C:\\Users\\Weeks\\source\\repos\\.git\\ORIG_HEAD",
+              "RelativeDocumentMoniker": ".git\\ORIG_HEAD",
+              "ToolTip": "C:\\Users\\Weeks\\source\\repos\\.git\\ORIG_HEAD",
+              "RelativeToolTip": ".git\\ORIG_HEAD",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-09-15T04:45:54.995Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "packed-refs",
+              "DocumentMoniker": "C:\\Users\\Weeks\\source\\repos\\.git\\packed-refs",
+              "RelativeDocumentMoniker": ".git\\packed-refs",
+              "ToolTip": "C:\\Users\\Weeks\\source\\repos\\.git\\packed-refs",
+              "RelativeToolTip": ".git\\packed-refs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-09-15T04:45:53.186Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "HEAD",
+              "DocumentMoniker": "C:\\Users\\Weeks\\source\\repos\\.git\\refs\\remotes\\origin\\HEAD",
+              "RelativeDocumentMoniker": ".git\\refs\\remotes\\origin\\HEAD",
+              "ToolTip": "C:\\Users\\Weeks\\source\\repos\\.git\\refs\\remotes\\origin\\HEAD",
+              "RelativeToolTip": ".git\\refs\\remotes\\origin\\HEAD",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-09-15T04:43:37.299Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "main",
+              "DocumentMoniker": "C:\\Users\\Weeks\\source\\repos\\.git\\refs\\heads\\main",
+              "RelativeDocumentMoniker": ".git\\refs\\heads\\main",
+              "ToolTip": "C:\\Users\\Weeks\\source\\repos\\.git\\refs\\heads\\main",
+              "RelativeToolTip": ".git\\refs\\heads\\main",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-09-15T04:43:32.976Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "HEAD",
+              "DocumentMoniker": "C:\\Users\\Weeks\\source\\repos\\.git\\logs\\refs\\remotes\\origin\\HEAD",
+              "RelativeDocumentMoniker": ".git\\logs\\refs\\remotes\\origin\\HEAD",
+              "ToolTip": "C:\\Users\\Weeks\\source\\repos\\.git\\logs\\refs\\remotes\\origin\\HEAD",
+              "RelativeToolTip": ".git\\logs\\refs\\remotes\\origin\\HEAD",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-09-15T04:43:23.651Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "main",
+              "DocumentMoniker": "C:\\Users\\Weeks\\source\\repos\\.git\\logs\\refs\\heads\\main",
+              "RelativeDocumentMoniker": ".git\\logs\\refs\\heads\\main",
+              "ToolTip": "C:\\Users\\Weeks\\source\\repos\\.git\\logs\\refs\\heads\\main",
+              "RelativeToolTip": ".git\\logs\\refs\\heads\\main",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-09-15T04:43:13.736Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "HEAD",
+              "DocumentMoniker": "C:\\Users\\Weeks\\source\\repos\\.git\\logs\\HEAD",
+              "RelativeDocumentMoniker": ".git\\logs\\HEAD",
+              "ToolTip": "C:\\Users\\Weeks\\source\\repos\\.git\\logs\\HEAD",
+              "RelativeToolTip": ".git\\logs\\HEAD",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-09-15T04:43:06.356Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "exclude",
+              "DocumentMoniker": "C:\\Users\\Weeks\\source\\repos\\.git\\info\\exclude",
+              "RelativeDocumentMoniker": ".git\\info\\exclude",
+              "ToolTip": "C:\\Users\\Weeks\\source\\repos\\.git\\info\\exclude",
+              "RelativeToolTip": ".git\\info\\exclude",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-09-15T04:42:59.204Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "pre-push.sample",
+              "DocumentMoniker": "C:\\Users\\Weeks\\source\\repos\\.git\\hooks\\pre-push.sample",
+              "RelativeDocumentMoniker": ".git\\hooks\\pre-push.sample",
+              "ToolTip": "C:\\Users\\Weeks\\source\\repos\\.git\\hooks\\pre-push.sample",
+              "RelativeToolTip": ".git\\hooks\\pre-push.sample",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-09-15T04:42:33.46Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "VSWorkspaceState.json",
+              "DocumentMoniker": "C:\\Users\\Weeks\\source\\repos\\.vs\\VSWorkspaceState.json",
+              "RelativeDocumentMoniker": ".vs\\VSWorkspaceState.json",
+              "ToolTip": "C:\\Users\\Weeks\\source\\repos\\.vs\\VSWorkspaceState.json",
+              "RelativeToolTip": ".vs\\VSWorkspaceState.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-09-15T04:42:03.242Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "DocumentLayout.backup.json",
+              "DocumentMoniker": "C:\\Users\\Weeks\\source\\repos\\.vs\\repos\\v17\\DocumentLayout.backup.json",
+              "RelativeDocumentMoniker": ".vs\\repos\\v17\\DocumentLayout.backup.json",
+              "ToolTip": "C:\\Users\\Weeks\\source\\repos\\.vs\\repos\\v17\\DocumentLayout.backup.json",
+              "RelativeToolTip": ".vs\\repos\\v17\\DocumentLayout.backup.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-09-15T04:41:54.29Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "DocumentLayout.json",
+              "DocumentMoniker": "C:\\Users\\Weeks\\source\\repos\\.vs\\repos\\v17\\DocumentLayout.json",
+              "RelativeDocumentMoniker": ".vs\\repos\\v17\\DocumentLayout.json",
+              "ToolTip": "C:\\Users\\Weeks\\source\\repos\\.vs\\repos\\v17\\DocumentLayout.json",
+              "RelativeToolTip": ".vs\\repos\\v17\\DocumentLayout.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-09-15T04:41:50.9Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "VSWorkspaceSettings.json",
+              "DocumentMoniker": "C:\\Users\\Weeks\\AppData\\Local\\Microsoft\\VisualStudio\\17.0_448f582d\\OpenFolder\\VSWorkspaceSettings.json",
+              "RelativeDocumentMoniker": "..\\..\\AppData\\Local\\Microsoft\\VisualStudio\\17.0_448f582d\\OpenFolder\\VSWorkspaceSettings.json",
+              "ToolTip": "C:\\Users\\Weeks\\AppData\\Local\\Microsoft\\VisualStudio\\17.0_448f582d\\OpenFolder\\VSWorkspaceSettings.json",
+              "RelativeToolTip": "..\\..\\AppData\\Local\\Microsoft\\VisualStudio\\17.0_448f582d\\OpenFolder\\VSWorkspaceSettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-09-15T04:41:34.452Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "pre-rebase.sample",
+              "DocumentMoniker": "C:\\Users\\Weeks\\source\\repos\\.git\\hooks\\pre-rebase.sample",
+              "RelativeDocumentMoniker": ".git\\hooks\\pre-rebase.sample",
+              "ToolTip": "C:\\Users\\Weeks\\source\\repos\\.git\\hooks\\pre-rebase.sample",
+              "RelativeToolTip": ".git\\hooks\\pre-rebase.sample",
+              "ViewState": "AgIAAI0AAAAAAAAAAAAAAAsAAABNAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-09-15T04:39:46.71Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "post-update.sample",
+              "DocumentMoniker": "C:\\Users\\Weeks\\source\\repos\\.git\\hooks\\post-update.sample",
+              "RelativeDocumentMoniker": ".git\\hooks\\post-update.sample",
+              "ToolTip": "C:\\Users\\Weeks\\source\\repos\\.git\\hooks\\post-update.sample",
+              "RelativeToolTip": ".git\\hooks\\post-update.sample",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-09-15T04:39:17.195Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
