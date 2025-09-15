@@ -85,10 +85,7 @@ AnalysisResult GenomeAI::analyze_sequence(const std::string& sequence, SequenceT
     auto start_time = std::chrono::high_resolution_clock::now();
     
     // Update performance stats
-    {
-        std::lock_guard<std::mutex> lock(stats_mutex_);
-        performance_stats_.sequences_processed++;
-    }
+    performance_stats_.sequences_processed++;
     
     // Delegate to sequence analyzer
     auto result = sequence_analyzer_->analyze(sequence, type);
@@ -312,12 +309,10 @@ bool GenomeAI::download_reference_genome(const std::string& species,
 }
 
 PerformanceStats GenomeAI::get_performance_stats() const {
-    std::lock_guard<std::mutex> lock(stats_mutex_);
     return performance_stats_;
 }
 
 void GenomeAI::reset_performance_stats() {
-    std::lock_guard<std::mutex> lock(stats_mutex_);
     performance_stats_ = {};
 }
 
@@ -345,11 +340,8 @@ void GenomeAI::clear_cache() {
     }
     
     // Clear other caches
-    {
-        std::lock_guard<std::mutex> lock(stats_mutex_);
-        performance_stats_.cache_hits = 0;
-        performance_stats_.cache_misses = 0;
-    }
+    performance_stats_.cache_hits = 0;
+    performance_stats_.cache_misses = 0;
 }
 
 bool GenomeAI::setup_directories() {
