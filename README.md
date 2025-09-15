@@ -1,5 +1,18 @@
 # DNA/RNA Research AI
 
+
+Lightweight C++ tool for fetching nucleotide sequences and computing GC content.
+
+## Features
+- Fetches data from NCBI or a local FASTA file
+- Calculates GC content and sequence length
+- Writes results to a compressed `summary.gz`
+
+## Installation
+1. Install a C++17 compiler, CMake, libcurl, and zlib
+2. Build:
+
+
 This project provides a lightweight C++ tool for fetching nucleotide sequences from the NCBI databases and performing basic analysis, optimized for data‑science workflows.
 
 ## Features
@@ -12,11 +25,21 @@ This project provides a lightweight C++ tool for fetching nucleotide sequences f
 ## Installation
 1. Ensure a C++17 compiler, CMake, `libcurl`, and `zlib` are installed.
 2. Build the project:
+
    ```bash
    mkdir build && cd build
    cmake ../dna_ai
    make
    ```
+
+   
+## Usage
+Fetch an accession:
+```bash
+./dna_ai NM_007294.4
+```
+Analyze a local file:
+
 
 ## Usage Example
 ```bash
@@ -25,9 +48,20 @@ This project provides a lightweight C++ tool for fetching nucleotide sequences f
 This retrieves the BRCA1 mRNA sequence, calculates GC content, prints the results, and writes a compressed summary to `summary.gz`.
 
 To analyze an offline FASTA file:
+
 ```bash
 ./dna_ai path/to/local.fasta
 ```
+
+
+## Optimization
+- Compiled with `-O3 -march=native`
+- Streams output directly into gzip
+
+## Debugging
+- Build with debug info: `cmake -DCMAKE_BUILD_TYPE=Debug ../dna_ai && make`
+- Run under gdb: `gdb ./dna_ai`
+- Network errors show curl messages; test offline with a local FASTA file
 
 ## Optimization Strategies
 - Compilation with `-O3 -march=native` and warnings enabled for performance and safety.
@@ -46,4 +80,5 @@ To analyze an offline FASTA file:
 ## Limitations
 - Requires access to the NCBI web APIs.
 - Only basic GC-content analysis is currently implemented.
+
 
