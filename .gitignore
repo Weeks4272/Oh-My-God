@@ -1,2 +1,4 @@
 build/
 summary.gz
+# Ignore Visual Studio cache files
+/.vs/
