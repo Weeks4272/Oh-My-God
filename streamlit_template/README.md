@@ -3,7 +3,7 @@ License: MIT Python 3.10+ Docker
 
 GenomeAI is a production-ready bioinformatics pipeline that combines state-of-the-art genomics analysis with artificial intelligence to provide comprehensive variant interpretation and RNA-seq analysis.
 
-🚀 Features
+  Features
 Core Pipeline
 Quality Control: fastp for read trimming and quality assessment
 Alignment: bwa-mem2 (Illumina) and minimap2 (Nanopore) to GRCh38
@@ -21,19 +21,19 @@ Containerized: Docker support with multi-stage builds
 Scalable: Configurable resource usage and parallel processing
 Reproducible: Version-controlled analysis with detailed logging
 Extensible: Modular design for easy customization
-📋 Requirements
+  Requirements
 System Requirements
 Linux/macOS (recommended)
 Python 3.10+
 16GB+ RAM (32GB recommended)
 100GB+ storage for reference data
 Docker (optional but recommended)
-Dependencies
+  Dependencies
 Bioinformatics tools (fastp, bwa-mem2, samtools, etc.)
 Python packages (pandas, numpy, sentence-transformers, etc.)
 Reference data (GRCh38, ClinVar, gnomAD)
 The CLI performs a preflight check and will exit with a clear message if any of these tools are missing.
-🛠️ Installation
+# Installation #
 Option 1: Docker (Recommended)
 # Build the container
 docker build -t genomeai:latest .
@@ -57,8 +57,8 @@ mamba install -c bioconda fastp bwa-mem2 minimap2 samtools bcftools freebayes ga
 
 # Install Python dependencies
 pip install -r requirements.txt
-📊 Quick Start
-DNA Variant Analysis
+  Quick Start
+    DNA Variant Analysis
 # Using Python module
 python -m src.cli dna reads_R1.fastq.gz \
   --r2 reads_R2.fastq.gz \
@@ -70,7 +70,7 @@ docker run -v $(pwd):/data genomeai:latest dna \
   /data/reads_R1.fastq.gz \
   --r2 /data/reads_R2.fastq.gz \
   --outdir /data/output
-RNA-seq Analysis
+                                          RNA-seq Analysis
 # RNA-seq only analysis
 python -m src.cli rna-only rnaseq_R1.fastq.gz \
   --r2 rnaseq_R2.fastq.gz \
@@ -81,14 +81,14 @@ docker run -v $(pwd):/data genomeai:latest rna-only \
   /data/rnaseq_R1.fastq.gz \
   --r2 /data/rnaseq_R2.fastq.gz \
   --outdir /data/rna_output
-AI Explanation Generation
+                                          AI Explanation Generation
 # Generate AI explanations for variants
 python -m src.cli explain analysis_output/annotation/variants_annotated.parquet \
   --outdir explanation_output
 
 # Build ClinVar similarity index (first time only)
 python -m src.cli build-index
-📁 Output Structure
+                                                    Output Structure:
 output_directory/
 ├── qc/                          # Quality control results
 │   ├── fastp_report.html
@@ -111,7 +111,7 @@ output_directory/
 │   └── analysis_summary.json
 └── logs/                       # Analysis logs
     └── genomeai.log
-⚙️ Configuration
+                                                    Configuration
 GenomeAI uses a YAML configuration file (config.yaml) for all settings:
 
 # Example configuration
@@ -155,7 +155,7 @@ salmon index -t gencode.v44.transcripts.fa.gz -i salmon_index_gencode44
 VEP Cache Installation
 # Install VEP cache
 vep_install -a cf -s homo_sapiens -y GRCh38 -c /path/to/vep_cache --CONVERT
-🤖 AI Features
+# AI Features #
 Similarity Search
 GenomeAI uses FAISS (Facebook AI Similarity Search) to find similar variants in ClinVar:
 
@@ -195,7 +195,7 @@ Dataset Size	Recommended Resources
 Exome (~30M variants)	16GB RAM, 8 cores
 Genome (~5M variants)	32GB RAM, 16 cores
 Population cohort	64GB+ RAM, 32+ cores
-🧪 Testing
+        Testing
 # Run unit tests
 pytest tests/
 
@@ -207,7 +207,7 @@ pytest --cov=src tests/
 
 # Test specific module
 pytest tests/test_variant_calling.py
-📚 Documentation
+        Documentation
 API Documentation
 # Generate API docs
 python -m src.cli --help
