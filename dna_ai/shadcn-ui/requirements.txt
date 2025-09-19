@@ -1,0 +1,41 @@
+# Core AI and ML libraries
+torch>=2.0.0
+transformers>=4.30.0
+tensorflow>=2.13.0
+numpy>=1.24.0
+pandas>=2.0.0
+scikit-learn>=1.3.0
+
+# Web framework and API
+fastapi>=0.100.0
+uvicorn>=0.22.0
+flask>=2.3.0
+requests>=2.31.0
+
+# NLP and text processing
+nltk>=3.8
+spacy>=3.6.0
+sentence-transformers>=2.2.0
+
+# Advanced AI frameworks
+haystack-ai>=2.0.0
+sympy>=1.12
+RAGatouille>=0.0.7
+
+# Development and utilities
+python-dotenv>=1.0.0
+pydantic>=2.0.0
+aiofiles>=23.0.0
+python-multipart>=0.0.6
+
+# Optional GPU acceleration
+# torch-audio  # Uncomment if needed
+# torch-vision # Uncomment if needed
+
+# Data processing
+jsonlines>=3.1.0
+beautifulsoup4>=4.12.0
+lxml>=4.9.0
+
+# Logging and monitoring
+loguru>=0.7.0

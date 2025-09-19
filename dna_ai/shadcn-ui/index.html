@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Universal AI Assistant</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">AI</div>
+                <div class="sidebar-title">Universal AI</div>
+            </div>
+            
+            <nav class="nav-menu">
+                <button class="nav-item active" data-view="editor">
+                    <span class="nav-icon">📝</span>
+                    <span class="nav-text">Code Editor</span>
+                </button>
+                <button class="nav-item" data-view="chat">
+                    <span class="nav-icon">💬</span>
+                    <span class="nav-text">AI Chat</span>
+                </button>
+                <button class="nav-item" data-view="files">
+                    <span class="nav-icon">📁</span>
+                    <span class="nav-text">File Explorer</span>
+                </button>
+                <button class="nav-item" data-view="languages">
+                    <span class="nav-icon">🌐</span>
+                    <span class="nav-text">Languages</span>
+                </button>
+                <button class="nav-item" data-view="settings">
+                    <span class="nav-icon">⚙️</span>
+                    <span class="nav-text">Settings</span>
+                </button>
+            </nav>
+
+            <!-- Import Section -->
+            <div class="import-section">
+                <div class="import-header">Import Files</div>
+                <div class="import-actions">
+                    <button class="import-btn" id="importFiles">
+                        <span>📄</span>
+                        <span>Files</span>
+                    </button>
+                    <button class="import-btn" id="importFolder">
+                        <span>📁</span>
+                        <span>Folder</span>
+                    </button>
+                </div>
+                <div class="drop-zone" id="dropZone">
+                    <div class="drop-zone-content">
+                        <span class="drop-icon">📥</span>
+                        <span class="drop-text">Drop files here</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Header -->
+            <div class="header">
+                <div class="header-left">
+                    <button class="toggle-sidebar" id="toggleSidebar">☰</button>
+                    <div class="breadcrumb" id="breadcrumb">Universal AI Assistant - Code & Chat</div>
+                </div>
+                <div class="header-right">
+                    <select class="language-selector" id="languageSelector">
+                        <option value="python">🐍 Python</option>
+                        <option value="javascript">🟨 JavaScript</option>
+                        <option value="java">☕ Java</option>
+                        <option value="cpp">⚡ C++</option>
+                        <option value="rust">🦀 Rust</option>
+                        <option value="go">🐹 Go</option>
+                        <option value="ruby">💎 Ruby</option>
+                        <option value="php">🐘 PHP</option>
+                        <option value="swift">🐦 Swift</option>
+                        <option value="kotlin">🎯 Kotlin</option>
+                        <option value="csharp">🔵 C#</option>
+                        <option value="typescript">🔷 TypeScript</option>
+                        <option value="r">📊 R</option>
+                        <option value="julia">🔬 Julia</option>
+                        <option value="haskell">🎩 Haskell</option>
+                        <option value="clojure">🌀 Clojure</option>
+                        <option value="erlang">📡 Erlang</option>
+                        <option value="elixir">💜 Elixir</option>
+                        <option value="bash">💻 Bash</option>
+                        <option value="powershell">🔋 PowerShell</option>
+                        <option value="lua">🌙 Lua</option>
+                        <option value="zig">⚡ Zig</option>
+                        <option value="nim">👑 Nim</option>
+                        <option value="crystal">💎 Crystal</option>
+                        <option value="sql">🗃️ SQL</option>
+                    </select>
+                    <button class="btn btn-primary" id="runCode">▶️ Run</button>
+                    <button class="btn btn-secondary" id="toggleAI">🤖 AI Chat</button>
+                </div>
+            </div>
+
+            <!-- Content Area -->
+            <div class="content-area">
+                <!-- File Explorer -->
+                <div class="file-explorer" id="fileExplorer">
+                    <div class="explorer-header">
+                        <span>Explorer</span>
+                        <div class="explorer-actions">
+                            <button class="explorer-btn" id="newFile" title="New File">📄</button>
+                            <button class="explorer-btn" id="newFolder" title="New Folder">📁</button>
+                            <button class="explorer-btn" id="refreshExplorer" title="Refresh">🔄</button>
+                        </div>
+                    </div>
+                    <div class="file-tree" id="fileTree">
+                        <div class="workspace-info">
+                            <div class="workspace-title">📂 Workspace</div>
+                            <div class="workspace-path">/workspace</div>
+                        </div>
+                        <!-- Dynamic file tree will be populated here -->
+                    </div>
+                </div>
+
+                <!-- Editor Container -->
+                <div class="editor-container">
+                    <div class="editor-tabs" id="editorTabs">
+                        <button class="editor-tab active" data-file="welcome.md">
+                            <span>📄 Welcome</span>
+                            <button class="tab-close">×</button>
+                        </button>
+                    </div>
+                    <textarea 
+                        class="code-editor" 
+                        id="codeEditor" 
+                        placeholder="# Welcome to Universal AI Assistant!
+# This AI can code in 30+ programming languages
+# Switch between 💻 Coding Mode and 💬 General Chat Mode
+# Try the AI chat for code generation and everyday questions!
+
+print('Hello, World!')
+print('Universal AI Assistant is ready!')
+
+# Features:
+# - Import files and folders
+# - Multi-file editing with tabs
+# - 30+ programming languages
+# - Dual-mode AI (Coding + General)
+# - Dark theme interface
+# - Real-time code execution
+
+# Get started:
+# 1. Import your files using the sidebar
+# 2. Open the AI chat for assistance
+# 3. Select a programming language
+# 4. Start coding!
+"># Welcome to Universal AI Assistant!
+# This AI can code in 30+ programming languages
+# Switch between 💻 Coding Mode and 💬 General Chat Mode
+# Try the AI chat for code generation and everyday questions!
+
+print('Hello, World!')
+print('Universal AI Assistant is ready!')
+
+# Features:
+# - Import files and folders
+# - Multi-file editing with tabs
+# - 30+ programming languages
+# - Dual-mode AI (Coding + General)
+# - Dark theme interface
+# - Real-time code execution
+
+# Get started:
+# 1. Import your files using the sidebar
+# 2. Open the AI chat for assistance
+# 3. Select a programming language
+# 4. Start coding!
+</textarea>
+                </div>
+
+                <!-- Settings Panel -->
+                <div class="settings-panel hidden" id="settingsPanel">
+                    <div class="settings-header">
+                        <h2>⚙️ Settings</h2>
+                        <button class="close-settings" id="closeSettings">×</button>
+                    </div>
+                    
+                    <div class="settings-content">
+                        <div class="settings-section">
+                            <h3>🎨 Appearance</h3>
+                            <div class="setting-item">
+                                <label for="themeSelect">Theme:</label>
+                                <select id="themeSelect" class="setting-select">
+                                    <option value="dark">🌙 Dark</option>
+                                    <option value="light">☀️ Light</option>
+                                    <option value="auto">🔄 Auto</option>
+                                </select>
+                            </div>
+                            <div class="setting-item">
+                                <label for="fontSizeSlider">Font Size:</label>
+                                <input type="range" id="fontSizeSlider" min="12" max="24" value="14" class="setting-slider">
+                                <span id="fontSizeValue">14px</span>
+                            </div>
+                            <div class="setting-item">
+                                <label for="fontFamilySelect">Font Family:</label>
+                                <select id="fontFamilySelect" class="setting-select">
+                                    <option value="monaco">Monaco</option>
+                                    <option value="consolas">Consolas</option>
+                                    <option value="fira-code">Fira Code</option>
+                                    <option value="source-code-pro">Source Code Pro</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="settings-section">
+                            <h3>📝 Editor</h3>
+                            <div class="setting-item">
+                                <label for="tabSizeSlider">Tab Size:</label>
+                                <input type="range" id="tabSizeSlider" min="2" max="8" value="2" class="setting-slider">
+                                <span id="tabSizeValue">2 spaces</span>
+                            </div>
+                            <div class="setting-item">
+                                <label>
+                                    <input type="checkbox" id="wordWrapCheck" checked>
+                                    Word Wrap
+                                </label>
+                            </div>
+                            <div class="setting-item">
+                                <label>
+                                    <input type="checkbox" id="lineNumbersCheck" checked>
+                                    Line Numbers
+                                </label>
+                            </div>
+                            <div class="setting-item">
+                                <label>
+                                    <input type="checkbox" id="autoSaveCheck" checked>
+                                    Auto Save
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="settings-section">
+                            <h3>🤖 AI Assistant</h3>
+                            <div class="setting-item">
+                                <label for="defaultModeSelect">Default Mode:</label>
+                                <select id="defaultModeSelect" class="setting-select">
+                                    <option value="coding">💻 Coding</option>
+                                    <option value="general">💬 General</option>
+                                </select>
+                            </div>
+                            <div class="setting-item">
+                                <label>
+                                    <input type="checkbox" id="autoCompleteCheck" checked>
+                                    Auto Complete Suggestions
+                                </label>
+                            </div>
+                            <div class="setting-item">
+                                <label>
+                                    <input type="checkbox" id="codeAnalysisCheck" checked>
+                                    Real-time Code Analysis
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="settings-section">
+                            <h3>🔧 Advanced</h3>
+                            <div class="setting-item">
+                                <label for="maxFilesSlider">Max Open Files:</label>
+                                <input type="range" id="maxFilesSlider" min="5" max="50" value="20" class="setting-slider">
+                                <span id="maxFilesValue">20 files</span>
+                            </div>
+                            <div class="setting-item">
+                                <label>
+                                    <input type="checkbox" id="debugModeCheck">
+                                    Debug Mode
+                                </label>
+                            </div>
+                            <div class="setting-item">
+                                <button class="btn btn-secondary" id="resetSettings">Reset to Defaults</button>
+                            </div>
+                        </div>
+
+                        <div class="settings-section">
+                            <h3>💾 Data</h3>
+                            <div class="setting-item">
+                                <button class="btn btn-primary" id="exportSettings">Export Settings</button>
+                                <button class="btn btn-secondary" id="importSettings">Import Settings</button>
+                            </div>
+                            <div class="setting-item">
+                                <button class="btn btn-warning" id="clearData">Clear All Data</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AI Assistant Panel -->
+                <div class="ai-panel hidden" id="aiPanel">
+                    <div class="ai-header">
+                        <div class="ai-title">🤖 Universal AI</div>
+                        <div class="chat-mode-toggle" id="modeToggle">
+                            <button class="mode-btn active" data-mode="coding">💻 Code</button>
+                            <button class="mode-btn" data-mode="general">💬 Chat</button>
+                        </div>
+                        <button class="close-ai" id="closeAI">×</button>
+                    </div>
+                    
+                    <div class="ai-chat">
+                        <div class="chat-messages" id="chatMessages">
+                            <div class="message ai">
+                                <div><strong>👋 Welcome to Universal AI Assistant!</strong></div>
+                                <div>I'm your dual-mode AI helper with enhanced file management:</div>
+                                <div></div>
+                                <div><strong>📁 File Management:</strong></div>
+                                <div>• Import files and folders via drag & drop</div>
+                                <div>• Multi-file editing with tabs</div>
+                                <div>• File explorer with full navigation</div>
+                                <div>• Auto-save and backup features</div>
+                                <div></div>
+                                <div><strong>💻 Coding Mode:</strong></div>
+                                <div>• Generate code in 30+ programming languages</div>
+                                <div>• Debug and fix code issues</div>
+                                <div>• Explain algorithms and concepts</div>
+                                <div>• Code analysis and optimization</div>
+                                <div></div>
+                                <div><strong>💬 General Chat Mode:</strong></div>
+                                <div>• Answer everyday questions</div>
+                                <div>• Solve math problems</div>
+                                <div>• Provide recommendations</div>
+                                <div>• Creative writing and translations</div>
+                                <div></div>
+                                <div><em>Try importing some files and start coding!</em></div>
+                            </div>
+                        </div>
+                        
+                        <div class="chat-input-container">
+                            <div class="chat-input-wrapper">
+                                <textarea 
+                                    class="chat-input" 
+                                    id="chatInput" 
+                                    placeholder="Ask me about coding, algorithms, debugging, or any programming question..."
+                                    rows="1"></textarea>
+                                <button class="send-button" id="sendMessage">Send</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Panel -->
+            <div class="bottom-panel" id="bottomPanel">
+                <div class="panel-tabs">
+                    <button class="panel-tab active" data-panel="output">Output</button>
+                    <button class="panel-tab" data-panel="terminal">Terminal</button>
+                    <button class="panel-tab" data-panel="problems">Problems</button>
+                    <button class="panel-tab" data-panel="search">Search</button>
+                </div>
+                <div class="panel-content" id="panelContent">
+                    <div class="output-success">✅ Universal AI Assistant initialized successfully!</div>
+                    <div class="output-success">✅ File import system ready</div>
+                    <div class="output-success">✅ Multi-file editor active</div>
+                    <div class="output-success">✅ Settings panel configured</div>
+                    <div class="output-success">✅ Dual-mode AI (Coding + General Chat) ready</div>
+                    <div>Ready to import files and start coding!</div>
+                </div>
+            </div>
+
+            <!-- Status Bar -->
+            <div class="status-bar">
+                <div class="status-left">
+                    <span>🟢 Ready</span>
+                    <span>Python 3.11</span>
+                    <span>UTF-8</span>
+                    <span id="fileCount">0 files</span>
+                </div>
+                <div class="status-right">
+                    <span>Ln 1, Col 1</span>
+                    <span id="currentFile">Welcome</span>
+                    <span>Universal AI Assistant</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hidden file inputs -->
+    <input type="file" id="fileInput" multiple style="display: none;" accept="*/*">
+    <input type="file" id="folderInput" webkitdirectory style="display: none;">
+
+    <script src="app.js"></script>
+</body>
+</html>
