@@ -20,7 +20,7 @@ sentence-transformers>=2.2.0
 # Advanced AI frameworks
 haystack-ai>=2.0.0
 sympy>=1.12
-RAGatouille>=0.0.7
+ragatouille>=0.0.7
 
 # Development and utilities
 python-dotenv>=1.0.0
