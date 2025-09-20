@@ -29,7 +29,7 @@ Quick Start
 pip install -r requirements.txt
 
 # Start Python AI Engine (Terminal 1)
-python ai_engine.py
+python3 ai_engine.py
 
 # Build and start C++ AI Engine (Terminal 2)
 make install-deps

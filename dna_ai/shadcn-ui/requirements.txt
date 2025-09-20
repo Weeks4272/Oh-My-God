@@ -18,7 +18,7 @@ spacy>=3.6.0
 sentence-transformers>=2.2.0
 
 # Advanced AI frameworks
-haystack-ai>=2.0.0
+
 sympy>=1.12
 ragatouille>=0.0.7
 
