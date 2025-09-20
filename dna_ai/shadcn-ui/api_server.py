@@ -18,7 +18,7 @@ import os
 import tempfile
 
 # Import our AI engine
-from ai_engine import AIEngineServer, CodeRequest, Language, RequestType
+from ai_engine import AIEngineServer, CodeRequest, Language
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
