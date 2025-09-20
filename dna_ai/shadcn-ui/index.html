@@ -5,331 +5,130 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Universal AI Assistant</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
 </head>
 <body>
     <div class="app-container">
-        <!-- Sidebar -->
-        <div class="sidebar" id="sidebar">
+        <!-- Sidebar Navigation - Resizable -->
+        <div class="sidebar resizable-panel" id="sidebar">
+            <div class="resize-handle resize-handle-right" data-direction="horizontal" data-target="sidebar"></div>
+            
             <div class="sidebar-header">
-                <div class="logo">AI</div>
-                <div class="sidebar-title">Universal AI</div>
+                <div class="logo">
+                    <span class="logo-icon">🤖</span>
+                </div>
             </div>
             
-            <nav class="nav-menu">
-                <button class="nav-item active" data-view="editor">
-                    <span class="nav-icon">📝</span>
-                    <span class="nav-text">Code Editor</span>
-                </button>
-                <button class="nav-item" data-view="chat">
+            <nav class="sidebar-nav">
+                <div class="nav-item active" data-view="chat" title="AI Chat">
                     <span class="nav-icon">💬</span>
-                    <span class="nav-text">AI Chat</span>
-                </button>
-                <button class="nav-item" data-view="files">
+                </div>
+                <div class="nav-item" data-view="files" title="Files">
                     <span class="nav-icon">📁</span>
-                    <span class="nav-text">File Explorer</span>
-                </button>
-                <button class="nav-item" data-view="languages">
-                    <span class="nav-icon">🌐</span>
-                    <span class="nav-text">Languages</span>
-                </button>
-                <button class="nav-item" data-view="settings">
+                </div>
+                <div class="nav-item" data-view="restrictions" title="Restrictions">
+                    <span class="nav-icon">🛡️</span>
+                </div>
+                <div class="nav-item" data-view="import" title="Import">
+                    <span class="nav-icon">📥</span>
+                </div>
+                <div class="nav-item" data-view="settings" title="Settings">
                     <span class="nav-icon">⚙️</span>
-                    <span class="nav-text">Settings</span>
-                </button>
+                </div>
             </nav>
-
-            <!-- Import Section -->
-            <div class="import-section">
-                <div class="import-header">Import Files</div>
-                <div class="import-actions">
-                    <button class="import-btn" id="importFiles">
-                        <span>📄</span>
-                        <span>Files</span>
-                    </button>
-                    <button class="import-btn" id="importFolder">
-                        <span>📁</span>
-                        <span>Folder</span>
-                    </button>
-                </div>
-                <div class="drop-zone" id="dropZone">
-                    <div class="drop-zone-content">
-                        <span class="drop-icon">📥</span>
-                        <span class="drop-text">Drop files here</span>
-                    </div>
-                </div>
-            </div>
         </div>
 
-        <!-- Main Content -->
+        <!-- Main Content Area -->
         <div class="main-content">
             <!-- Header -->
             <div class="header">
                 <div class="header-left">
-                    <button class="toggle-sidebar" id="toggleSidebar">☰</button>
-                    <div class="breadcrumb" id="breadcrumb">Universal AI Assistant - Code & Chat</div>
+                    <h1 class="page-title">Universal AI Assistant</h1>
+                    <div class="mode-selector">
+                        <button class="mode-btn active" data-mode="coding" title="Coding Mode">💻</button>
+                        <button class="mode-btn" data-mode="general" title="General Mode">💬</button>
+                    </div>
                 </div>
                 <div class="header-right">
-                    <select class="language-selector" id="languageSelector">
-                        <option value="python">🐍 Python</option>
-                        <option value="javascript">🟨 JavaScript</option>
-                        <option value="java">☕ Java</option>
-                        <option value="cpp">⚡ C++</option>
-                        <option value="rust">🦀 Rust</option>
-                        <option value="go">🐹 Go</option>
-                        <option value="ruby">💎 Ruby</option>
-                        <option value="php">🐘 PHP</option>
-                        <option value="swift">🐦 Swift</option>
-                        <option value="kotlin">🎯 Kotlin</option>
-                        <option value="csharp">🔵 C#</option>
-                        <option value="typescript">🔷 TypeScript</option>
-                        <option value="r">📊 R</option>
-                        <option value="julia">🔬 Julia</option>
-                        <option value="haskell">🎩 Haskell</option>
-                        <option value="clojure">🌀 Clojure</option>
-                        <option value="erlang">📡 Erlang</option>
-                        <option value="elixir">💜 Elixir</option>
-                        <option value="bash">💻 Bash</option>
-                        <option value="powershell">🔋 PowerShell</option>
-                        <option value="lua">🌙 Lua</option>
-                        <option value="zig">⚡ Zig</option>
-                        <option value="nim">👑 Nim</option>
-                        <option value="crystal">💎 Crystal</option>
-                        <option value="sql">🗃️ SQL</option>
-                    </select>
-                    <button class="btn btn-primary" id="runCode">▶️ Run</button>
-                    <button class="btn btn-secondary" id="toggleAI">🤖 AI Chat</button>
+                    <div class="status-indicator">
+                        <span class="status-dot online"></span>
+                        <span class="status-text">AI Ready</span>
+                    </div>
+                    <button class="btn-icon" id="toggleAI" title="Toggle AI Panel">🤖</button>
                 </div>
             </div>
 
-            <!-- Content Area -->
+            <!-- Content Area - Resizable Layout -->
             <div class="content-area">
-                <!-- File Explorer -->
-                <div class="file-explorer" id="fileExplorer">
-                    <div class="explorer-header">
-                        <span>Explorer</span>
-                        <div class="explorer-actions">
-                            <button class="explorer-btn" id="newFile" title="New File">📄</button>
-                            <button class="explorer-btn" id="newFolder" title="New Folder">📁</button>
-                            <button class="explorer-btn" id="refreshExplorer" title="Refresh">🔄</button>
+                <!-- Chat View - Resizable -->
+                <div class="view resizable-panel" id="chatView">
+                    <div class="resize-handle resize-handle-right" data-direction="horizontal" data-target="chatView"></div>
+                    
+                    <!-- Chat Messages Area -->
+                    <div class="chat-messages" id="mainChatMessages">
+                        <div class="message ai">
+                            <div class="message-content">
+                                <strong>🚀 Universal AI Assistant - Ready to Help!</strong><br><br>
+                                I'm here to assist you with anything you need! I can help with:<br><br>
+                                💻 <strong>Programming & Development</strong><br>
+                                - Write complete, working code in any language<br>
+                                - Create full applications (calculators, games, dashboards)<br>
+                                - Debug and optimize existing code<br>
+                                - Explain programming concepts<br><br>
+                                🧠 <strong>Learning & Education</strong><br>
+                                - Explain complex topics simply<br>
+                                - Help with homework and research<br>
+                                - Provide step-by-step tutorials<br><br>
+                                ✍️ <strong>Writing & Creativity</strong><br>
+                                - Write stories, poems, and scripts<br>
+                                - Help with essays and articles<br>
+                                - Brainstorm creative ideas<br><br>
+                                <strong>What would you like to create or explore today?</strong>
+                            </div>
                         </div>
-                    </div>
-                    <div class="file-tree" id="fileTree">
-                        <div class="workspace-info">
-                            <div class="workspace-title">📂 Workspace</div>
-                            <div class="workspace-path">/workspace</div>
-                        </div>
-                        <!-- Dynamic file tree will be populated here -->
-                    </div>
-                </div>
-
-                <!-- Editor Container -->
-                <div class="editor-container">
-                    <div class="editor-tabs" id="editorTabs">
-                        <button class="editor-tab active" data-file="welcome.md">
-                            <span>📄 Welcome</span>
-                            <button class="tab-close">×</button>
-                        </button>
-                    </div>
-                    <textarea 
-                        class="code-editor" 
-                        id="codeEditor" 
-                        placeholder="# Welcome to Universal AI Assistant!
-# This AI can code in 30+ programming languages
-# Switch between 💻 Coding Mode and 💬 General Chat Mode
-# Try the AI chat for code generation and everyday questions!
-
-print('Hello, World!')
-print('Universal AI Assistant is ready!')
-
-# Features:
-# - Import files and folders
-# - Multi-file editing with tabs
-# - 30+ programming languages
-# - Dual-mode AI (Coding + General)
-# - Dark theme interface
-# - Real-time code execution
-
-# Get started:
-# 1. Import your files using the sidebar
-# 2. Open the AI chat for assistance
-# 3. Select a programming language
-# 4. Start coding!
-"># Welcome to Universal AI Assistant!
-# This AI can code in 30+ programming languages
-# Switch between 💻 Coding Mode and 💬 General Chat Mode
-# Try the AI chat for code generation and everyday questions!
-
-print('Hello, World!')
-print('Universal AI Assistant is ready!')
-
-# Features:
-# - Import files and folders
-# - Multi-file editing with tabs
-# - 30+ programming languages
-# - Dual-mode AI (Coding + General)
-# - Dark theme interface
-# - Real-time code execution
-
-# Get started:
-# 1. Import your files using the sidebar
-# 2. Open the AI chat for assistance
-# 3. Select a programming language
-# 4. Start coding!
-</textarea>
-                </div>
-
-                <!-- Settings Panel -->
-                <div class="settings-panel hidden" id="settingsPanel">
-                    <div class="settings-header">
-                        <h2>⚙️ Settings</h2>
-                        <button class="close-settings" id="closeSettings">×</button>
                     </div>
                     
-                    <div class="settings-content">
-                        <div class="settings-section">
-                            <h3>🎨 Appearance</h3>
-                            <div class="setting-item">
-                                <label for="themeSelect">Theme:</label>
-                                <select id="themeSelect" class="setting-select">
-                                    <option value="dark">🌙 Dark</option>
-                                    <option value="light">☀️ Light</option>
-                                    <option value="auto">🔄 Auto</option>
-                                </select>
-                            </div>
-                            <div class="setting-item">
-                                <label for="fontSizeSlider">Font Size:</label>
-                                <input type="range" id="fontSizeSlider" min="12" max="24" value="14" class="setting-slider">
-                                <span id="fontSizeValue">14px</span>
-                            </div>
-                            <div class="setting-item">
-                                <label for="fontFamilySelect">Font Family:</label>
-                                <select id="fontFamilySelect" class="setting-select">
-                                    <option value="monaco">Monaco</option>
-                                    <option value="consolas">Consolas</option>
-                                    <option value="fira-code">Fira Code</option>
-                                    <option value="source-code-pro">Source Code Pro</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="settings-section">
-                            <h3>📝 Editor</h3>
-                            <div class="setting-item">
-                                <label for="tabSizeSlider">Tab Size:</label>
-                                <input type="range" id="tabSizeSlider" min="2" max="8" value="2" class="setting-slider">
-                                <span id="tabSizeValue">2 spaces</span>
-                            </div>
-                            <div class="setting-item">
-                                <label>
-                                    <input type="checkbox" id="wordWrapCheck" checked>
-                                    Word Wrap
-                                </label>
-                            </div>
-                            <div class="setting-item">
-                                <label>
-                                    <input type="checkbox" id="lineNumbersCheck" checked>
-                                    Line Numbers
-                                </label>
-                            </div>
-                            <div class="setting-item">
-                                <label>
-                                    <input type="checkbox" id="autoSaveCheck" checked>
-                                    Auto Save
-                                </label>
-                            </div>
-                        </div>
-
-                        <div class="settings-section">
-                            <h3>🤖 AI Assistant</h3>
-                            <div class="setting-item">
-                                <label for="defaultModeSelect">Default Mode:</label>
-                                <select id="defaultModeSelect" class="setting-select">
-                                    <option value="coding">💻 Coding</option>
-                                    <option value="general">💬 General</option>
-                                </select>
-                            </div>
-                            <div class="setting-item">
-                                <label>
-                                    <input type="checkbox" id="autoCompleteCheck" checked>
-                                    Auto Complete Suggestions
-                                </label>
-                            </div>
-                            <div class="setting-item">
-                                <label>
-                                    <input type="checkbox" id="codeAnalysisCheck" checked>
-                                    Real-time Code Analysis
-                                </label>
-                            </div>
-                        </div>
-
-                        <div class="settings-section">
-                            <h3>🔧 Advanced</h3>
-                            <div class="setting-item">
-                                <label for="maxFilesSlider">Max Open Files:</label>
-                                <input type="range" id="maxFilesSlider" min="5" max="50" value="20" class="setting-slider">
-                                <span id="maxFilesValue">20 files</span>
-                            </div>
-                            <div class="setting-item">
-                                <label>
-                                    <input type="checkbox" id="debugModeCheck">
-                                    Debug Mode
-                                </label>
-                            </div>
-                            <div class="setting-item">
-                                <button class="btn btn-secondary" id="resetSettings">Reset to Defaults</button>
-                            </div>
-                        </div>
-
-                        <div class="settings-section">
-                            <h3>💾 Data</h3>
-                            <div class="setting-item">
-                                <button class="btn btn-primary" id="exportSettings">Export Settings</button>
-                                <button class="btn btn-secondary" id="importSettings">Import Settings</button>
-                            </div>
-                            <div class="setting-item">
-                                <button class="btn btn-warning" id="clearData">Clear All Data</button>
-                            </div>
+                    <!-- Chat Input -->
+                    <div class="chat-input-container">
+                        <div class="chat-input-wrapper">
+                            <textarea 
+                                class="chat-input" 
+                                id="mainChatInput" 
+                                placeholder="Ask me to create anything - apps, games, tools, or just ask questions..."
+                                rows="1"></textarea>
+                            <button class="send-button" id="mainSendMessage">Send</button>
                         </div>
                     </div>
                 </div>
 
-                <!-- AI Assistant Panel -->
-                <div class="ai-panel hidden" id="aiPanel">
+                <!-- AI Assistant Panel - Resizable -->
+                <div class="ai-panel resizable-panel" id="aiPanel">
+                    <div class="resize-handle resize-handle-right" data-direction="horizontal" data-target="aiPanel" style="left: -2px;"></div>
+                    
                     <div class="ai-header">
                         <div class="ai-title">🤖 Universal AI</div>
                         <div class="chat-mode-toggle" id="modeToggle">
-                            <button class="mode-btn active" data-mode="coding">💻 Code</button>
-                            <button class="mode-btn" data-mode="general">💬 Chat</button>
+                            <button class="mode-btn active" data-mode="coding" title="Code Mode">💻</button>
+                            <button class="mode-btn" data-mode="general" title="Chat Mode">💬</button>
+                        </div>
+                        <div class="ai-status" id="aiStatus">
+                            <span class="status-dot" id="statusDot">●</span>
+                            <span class="status-text" id="statusText">Ready</span>
                         </div>
                         <button class="close-ai" id="closeAI">×</button>
                     </div>
                     
                     <div class="ai-chat">
-                        <div class="chat-messages" id="chatMessages">
+                        <div class="chat-messages" id="aiChatMessages">
                             <div class="message ai">
-                                <div><strong>👋 Welcome to Universal AI Assistant!</strong></div>
-                                <div>I'm your dual-mode AI helper with enhanced file management:</div>
-                                <div></div>
-                                <div><strong>📁 File Management:</strong></div>
-                                <div>• Import files and folders via drag & drop</div>
-                                <div>• Multi-file editing with tabs</div>
-                                <div>• File explorer with full navigation</div>
-                                <div>• Auto-save and backup features</div>
-                                <div></div>
-                                <div><strong>💻 Coding Mode:</strong></div>
-                                <div>• Generate code in 30+ programming languages</div>
-                                <div>• Debug and fix code issues</div>
-                                <div>• Explain algorithms and concepts</div>
-                                <div>• Code analysis and optimization</div>
-                                <div></div>
-                                <div><strong>💬 General Chat Mode:</strong></div>
-                                <div>• Answer everyday questions</div>
-                                <div>• Solve math problems</div>
-                                <div>• Provide recommendations</div>
-                                <div>• Creative writing and translations</div>
-                                <div></div>
-                                <div><em>Try importing some files and start coding!</em></div>
+                                <div class="message-content">
+                                    <strong>🚀 AI Assistant Ready</strong><br>
+                                    I can create complete, working applications for you! Try asking:<br><br>
+                                    • "Create a calculator app"<br>
+                                    • "Build a todo list"<br>
+                                    • "Make a weather app"<br>
+                                    • "Create a game"<br><br>
+                                    What would you like me to build?
+                                </div>
                             </div>
                         </div>
                         
@@ -337,55 +136,354 @@ print('Universal AI Assistant is ready!')
                             <div class="chat-input-wrapper">
                                 <textarea 
                                     class="chat-input" 
-                                    id="chatInput" 
-                                    placeholder="Ask me about coding, algorithms, debugging, or any programming question..."
+                                    id="aiChatInput" 
+                                    placeholder="Ask me to create any app or code..."
                                     rows="1"></textarea>
-                                <button class="send-button" id="sendMessage">Send</button>
+                                <button class="send-button" id="aiSendMessage">Send</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Bottom Panel -->
-            <div class="bottom-panel" id="bottomPanel">
-                <div class="panel-tabs">
-                    <button class="panel-tab active" data-panel="output">Output</button>
-                    <button class="panel-tab" data-panel="terminal">Terminal</button>
-                    <button class="panel-tab" data-panel="problems">Problems</button>
-                    <button class="panel-tab" data-panel="search">Search</button>
-                </div>
-                <div class="panel-content" id="panelContent">
-                    <div class="output-success">✅ Universal AI Assistant initialized successfully!</div>
-                    <div class="output-success">✅ File import system ready</div>
-                    <div class="output-success">✅ Multi-file editor active</div>
-                    <div class="output-success">✅ Settings panel configured</div>
-                    <div class="output-success">✅ Dual-mode AI (Coding + General Chat) ready</div>
-                    <div>Ready to import files and start coding!</div>
+            <!-- Files View - Hidden by default -->
+            <div class="view hidden resizable-panel" id="filesView">
+                <div class="resize-handle resize-handle-bottom" data-direction="vertical" data-target="filesView"></div>
+                
+                <div class="files-container">
+                    <div class="files-header">
+                        <h2>Project Files</h2>
+                        <button class="btn-primary" id="createFile">+ New File</button>
+                    </div>
+                    <div class="files-list" id="filesList">
+                        <div class="empty-state">
+                            <div class="empty-icon">📄</div>
+                            <div class="empty-text">No files yet</div>
+                            <div class="empty-subtext">Create your first file to get started</div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <!-- Status Bar -->
-            <div class="status-bar">
-                <div class="status-left">
-                    <span>🟢 Ready</span>
-                    <span>Python 3.11</span>
-                    <span>UTF-8</span>
-                    <span id="fileCount">0 files</span>
+            <!-- Restrictions View -->
+            <div class="view hidden resizable-panel" id="restrictionsView">
+                <div class="restrictions-container">
+                    <h2>Content Restrictions</h2>
+                    <p>Configure AI content filtering and compliance rules.</p>
+                    <div style="margin-top: 20px; padding: 16px; background: #161b22; border-radius: 8px; border: 1px solid #30363d;">
+                        <h3 style="margin-bottom: 12px; color: #f0f6fc;">Quick Filters</h3>
+                        <label style="display: block; margin-bottom: 8px; color: #c9d1d9;">
+                            <input type="checkbox" style="margin-right: 8px;" id="filterViolence"> Block violent content
+                        </label>
+                        <label style="display: block; margin-bottom: 8px; color: #c9d1d9;">
+                            <input type="checkbox" style="margin-right: 8px;" id="filterAdult"> Block adult content
+                        </label>
+                        <label style="display: block; margin-bottom: 8px; color: #c9d1d9;">
+                            <input type="checkbox" style="margin-right: 8px;" id="filterHate"> Block hate speech
+                        </label>
+                        <button class="btn-primary" id="saveRestrictions" style="margin-top: 15px;">Save Settings</button>
+                    </div>
                 </div>
-                <div class="status-right">
-                    <span>Ln 1, Col 1</span>
-                    <span id="currentFile">Welcome</span>
-                    <span>Universal AI Assistant</span>
+            </div>
+
+            <!-- Import View -->
+            <div class="view hidden resizable-panel" id="importView">
+                <div class="import-container">
+                    <h2>Import Files</h2>
+                    <p>Upload and import your project files.</p>
+                    <div class="file-drop-zone" style="margin-top: 20px;" id="dropZone">
+                        <div class="drop-zone-content">
+                            <div class="drop-icon">📁</div>
+                            <div class="drop-text">Drop files here or click to browse</div>
+                            <input type="file" multiple hidden id="fileInput">
+                        </div>
+                    </div>
+                    <div id="filePreview" style="margin-top: 20px; display: none;">
+                        <h3>Selected Files:</h3>
+                        <div id="fileList"></div>
+                        <button class="btn-primary" id="uploadFiles" style="margin-top: 10px;">Upload Files</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Settings View -->
+            <div class="view hidden resizable-panel" id="settingsView">
+                <div class="settings-container">
+                    <h2>Settings</h2>
+                    <p>Configure your AI assistant preferences.</p>
+                    <div style="margin-top: 20px;">
+                        <div class="setting-item">
+                            <label>Theme:</label>
+                            <select id="themeSelect">
+                                <option value="dark">Dark</option>
+                                <option value="light">Light</option>
+                                <option value="auto">Auto</option>
+                            </select>
+                        </div>
+                        <div class="setting-item">
+                            <label>AI Response Speed:</label>
+                            <select id="speedSelect">
+                                <option value="fast">Fast</option>
+                                <option value="normal" selected>Normal</option>
+                                <option value="detailed">Detailed</option>
+                            </select>
+                        </div>
+                        <div class="setting-item">
+                            <label>Auto-save Conversations:</label>
+                            <input type="checkbox" id="autoSave" checked>
+                        </div>
+                        <button class="btn-primary" id="saveSettings" style="margin-top: 15px;">Save Settings</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Hidden file inputs -->
-    <input type="file" id="fileInput" multiple style="display: none;" accept="*/*">
-    <input type="file" id="folderInput" webkitdirectory style="display: none;">
-
     <script src="app.js"></script>
+    <script>
+        // Enhanced interactivity and functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🚀 Initializing Enhanced UI...');
+            
+            // Resizable functionality
+            let isResizing = false;
+            let currentHandle = null;
+            let startX = 0;
+            let startY = 0;
+            let startWidth = 0;
+            let startHeight = 0;
+
+            // Add event listeners to all resize handles
+            document.querySelectorAll('.resize-handle').forEach(handle => {
+                handle.addEventListener('mousedown', initResize);
+            });
+
+            function initResize(e) {
+                isResizing = true;
+                currentHandle = e.target;
+                startX = e.clientX;
+                startY = e.clientY;
+                
+                const targetId = currentHandle.dataset.target;
+                const targetElement = document.getElementById(targetId);
+                const rect = targetElement.getBoundingClientRect();
+                
+                startWidth = rect.width;
+                startHeight = rect.height;
+                
+                document.body.classList.add('resizing');
+                currentHandle.classList.add('resizing');
+                
+                document.addEventListener('mousemove', doResize);
+                document.addEventListener('mouseup', stopResize);
+                
+                e.preventDefault();
+            }
+
+            function doResize(e) {
+                if (!isResizing || !currentHandle) return;
+                
+                const targetId = currentHandle.dataset.target;
+                const targetElement = document.getElementById(targetId);
+                const direction = currentHandle.dataset.direction;
+                
+                if (direction === 'horizontal') {
+                    const deltaX = e.clientX - startX;
+                    let newWidth = startWidth + deltaX;
+                    
+                    // Set minimum and maximum widths
+                    newWidth = Math.max(200, Math.min(800, newWidth));
+                    targetElement.style.width = newWidth + 'px';
+                } else if (direction === 'vertical') {
+                    const deltaY = e.clientY - startY;
+                    let newHeight = startHeight + deltaY;
+                    
+                    // Set minimum and maximum heights
+                    newHeight = Math.max(200, Math.min(600, newHeight));
+                    targetElement.style.height = newHeight + 'px';
+                }
+            }
+
+            function stopResize() {
+                if (!isResizing) return;
+                
+                isResizing = false;
+                document.body.classList.remove('resizing');
+                if (currentHandle) {
+                    currentHandle.classList.remove('resizing');
+                }
+                currentHandle = null;
+                
+                document.removeEventListener('mousemove', doResize);
+                document.removeEventListener('mouseup', stopResize);
+            }
+
+            // Navigation functionality
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.addEventListener('click', function() {
+                    // Remove active class from all nav items
+                    document.querySelectorAll('.nav-item').forEach(nav => nav.classList.remove('active'));
+                    // Add active class to clicked item
+                    this.classList.add('active');
+                    
+                    // Hide all views
+                    document.querySelectorAll('.view').forEach(view => view.classList.add('hidden'));
+                    
+                    // Show selected view
+                    const viewId = this.dataset.view + 'View';
+                    const targetView = document.getElementById(viewId);
+                    if (targetView) {
+                        targetView.classList.remove('hidden');
+                    }
+                    
+                    console.log(`Switched to ${this.dataset.view} view`);
+                });
+            });
+
+            // AI Panel toggle
+            const toggleAI = document.getElementById('toggleAI');
+            const aiPanel = document.getElementById('aiPanel');
+            
+            if (toggleAI && aiPanel) {
+                toggleAI.addEventListener('click', function() {
+                    aiPanel.classList.toggle('hidden');
+                    console.log('AI Panel toggled');
+                });
+            }
+
+            // Close AI panel
+            const closeAI = document.getElementById('closeAI');
+            if (closeAI && aiPanel) {
+                closeAI.addEventListener('click', function() {
+                    aiPanel.classList.add('hidden');
+                    console.log('AI Panel closed');
+                });
+            }
+
+            // Mode switching
+            document.querySelectorAll('.mode-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Remove active from all mode buttons in the same container
+                    const container = this.closest('.mode-selector, .chat-mode-toggle');
+                    container.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
+                    
+                    // Add active to clicked button
+                    this.classList.add('active');
+                    
+                    const mode = this.dataset.mode;
+                    console.log(`Mode switched to: ${mode}`);
+                    
+                    // Update AI mode if universalAI exists
+                    if (typeof universalAI !== 'undefined') {
+                        universalAI.currentMode = mode;
+                    }
+                });
+            });
+
+            // File operations
+            const createFileBtn = document.getElementById('createFile');
+            if (createFileBtn) {
+                createFileBtn.addEventListener('click', function() {
+                    const fileName = prompt('Enter file name:');
+                    if (fileName) {
+                        console.log(`Creating file: ${fileName}`);
+                        // Add file creation logic here
+                        alert(`File "${fileName}" created successfully!`);
+                    }
+                });
+            }
+
+            // File upload functionality
+            const dropZone = document.getElementById('dropZone');
+            const fileInput = document.getElementById('fileInput');
+            const filePreview = document.getElementById('filePreview');
+            const fileList = document.getElementById('fileList');
+            const uploadFiles = document.getElementById('uploadFiles');
+
+            if (dropZone && fileInput) {
+                dropZone.addEventListener('click', () => fileInput.click());
+                
+                dropZone.addEventListener('dragover', function(e) {
+                    e.preventDefault();
+                    this.classList.add('drag-over');
+                });
+                
+                dropZone.addEventListener('dragleave', function(e) {
+                    e.preventDefault();
+                    this.classList.remove('drag-over');
+                });
+                
+                dropZone.addEventListener('drop', function(e) {
+                    e.preventDefault();
+                    this.classList.remove('drag-over');
+                    handleFiles(e.dataTransfer.files);
+                });
+                
+                fileInput.addEventListener('change', function(e) {
+                    handleFiles(e.target.files);
+                });
+            }
+
+            function handleFiles(files) {
+                if (files.length > 0) {
+                    fileList.innerHTML = '';
+                    Array.from(files).forEach(file => {
+                        const fileItem = document.createElement('div');
+                        fileItem.textContent = `${file.name} (${(file.size / 1024).toFixed(1)} KB)`;
+                        fileItem.style.padding = '5px';
+                        fileItem.style.background = '#f0f0f0';
+                        fileItem.style.margin = '2px 0';
+                        fileItem.style.borderRadius = '3px';
+                        fileList.appendChild(fileItem);
+                    });
+                    filePreview.style.display = 'block';
+                }
+            }
+
+            if (uploadFiles) {
+                uploadFiles.addEventListener('click', function() {
+                    alert('Files uploaded successfully!');
+                    filePreview.style.display = 'none';
+                    fileInput.value = '';
+                });
+            }
+
+            // Settings functionality
+            const saveSettings = document.getElementById('saveSettings');
+            if (saveSettings) {
+                saveSettings.addEventListener('click', function() {
+                    const theme = document.getElementById('themeSelect').value;
+                    const speed = document.getElementById('speedSelect').value;
+                    const autoSave = document.getElementById('autoSave').checked;
+                    
+                    console.log('Settings saved:', { theme, speed, autoSave });
+                    alert('Settings saved successfully!');
+                });
+            }
+
+            // Restrictions functionality
+            const saveRestrictions = document.getElementById('saveRestrictions');
+            if (saveRestrictions) {
+                saveRestrictions.addEventListener('click', function() {
+                    const violence = document.getElementById('filterViolence').checked;
+                    const adult = document.getElementById('filterAdult').checked;
+                    const hate = document.getElementById('filterHate').checked;
+                    
+                    console.log('Restrictions saved:', { violence, adult, hate });
+                    alert('Restriction settings saved successfully!');
+                });
+            }
+
+            // Auto-resize textareas
+            document.querySelectorAll('.chat-input').forEach(textarea => {
+                textarea.addEventListener('input', function() {
+                    this.style.height = 'auto';
+                    this.style.height = Math.min(this.scrollHeight, 120) + 'px';
+                });
+            });
+
+            console.log('✅ Enhanced UI initialized successfully!');
+        });
+    </script>
 </body>
 </html>

@@ -1,0 +1,47 @@
+{
+  "version": "1.0",
+  "lastUpdated": "2025-01-20",
+  "restrictions": {
+    "prohibited_content": [
+      "Illegal activities or instructions",
+      "Harmful or dangerous content",
+      "Personal information of real individuals",
+      "Copyrighted material reproduction",
+      "Malicious code or exploits"
+    ],
+    "prohibited_topics": [
+      "How to create weapons",
+      "Drug manufacturing",
+      "Hacking or unauthorized access",
+      "Identity theft methods",
+      "Fraud techniques"
+    ],
+    "content_filters": {
+      "violence": true,
+      "adult_content": true,
+      "hate_speech": true,
+      "misinformation": false,
+      "political_bias": false
+    },
+    "compliance": {
+      "gdpr": true,
+      "coppa": true,
+      "dmca": true,
+      "accessibility": true
+    },
+    "regional_restrictions": {
+      "enabled": false,
+      "regions": []
+    },
+    "custom_rules": [
+      "Always provide accurate information when possible",
+      "Acknowledge when uncertain about facts",
+      "Respect user privacy and data"
+    ]
+  },
+  "warning_messages": {
+    "content_blocked": "This request violates current content restrictions.",
+    "topic_restricted": "This topic is currently restricted based on your settings.",
+    "compliance_issue": "This request may conflict with compliance requirements."
+  }
+}
